@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { UserModel } from "../models/user.model";
-import { AuthDto } from "../dtos";
+import { SignupDto } from "../dtos";
 
 @Entity({name: 'user'})
 export class UserEntity {
@@ -28,7 +28,7 @@ export class UserEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-static fromModel(model: AuthDto): UserEntity{
+static fromModel(model: SignupDto): UserEntity{
     const entity = new UserEntity();
     entity.firstName = model.firstName
     entity.lastName = model.lastName

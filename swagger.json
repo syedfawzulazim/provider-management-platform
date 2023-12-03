@@ -10,7 +10,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/AuthDto"
+                                "$ref": "#/components/schemas/SignupDto"
                             }
                         }
                     }
@@ -23,11 +23,21 @@
             }
         },
         "/auth/signin": {
-            "get": {
+            "post": {
                 "operationId": "AuthController_signin",
                 "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SigninDto"
+                            }
+                        }
+                    }
+                },
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": ""
                     }
                 }
@@ -51,7 +61,11 @@
             }
         },
         "schemas": {
-            "AuthDto": {
+            "SignupDto": {
+                "type": "object",
+                "properties": {}
+            },
+            "SigninDto": {
                 "type": "object",
                 "properties": {}
             }
