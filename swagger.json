@@ -1,9 +1,30 @@
 {
     "openapi": "3.0.0",
     "paths": {
-        "/": {
+        "/auth/signup": {
+            "post": {
+                "operationId": "AuthController_signup",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/auth/signin": {
             "get": {
-                "operationId": "AppController_getHello",
+                "operationId": "AuthController_signin",
                 "parameters": [],
                 "responses": {
                     "200": {
@@ -29,6 +50,11 @@
                 "type": "http"
             }
         },
-        "schemas": {}
+        "schemas": {
+            "AuthDto": {
+                "type": "object",
+                "properties": {}
+            }
+        }
     }
 }
