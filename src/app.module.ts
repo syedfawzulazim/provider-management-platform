@@ -4,10 +4,11 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import typeOrmConfig from "./config/typeorm.config";
 import { AgreementController } from "./controllers";
 import { AgreementService } from "./services/agreement.service";
+import { JwtService } from "@nestjs/jwt";
 
 @Module({
   imports: [AuthModule, TypeOrmModule.forRoot(typeOrmConfig)],
   controllers: [AgreementController],
-  providers: [AgreementService],
+  providers: [AgreementService, JwtService],
 })
 export class AppModule {}

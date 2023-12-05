@@ -2,6 +2,7 @@ import { IDeadline } from "../interfaces";
 
 export class AgreementModel {
   id: number;
+  userId: number;
   title: string;
   description: string;
   skills: string[];

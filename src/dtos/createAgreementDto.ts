@@ -8,7 +8,7 @@ export class CreateAgreementDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsNumber()
-  id: number;
+  userId: number;
 
   @ApiProperty()
   @IsNotEmpty()

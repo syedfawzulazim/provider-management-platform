@@ -8,6 +8,9 @@ export class AgreementEntity {
   id: number;
 
   @Column()
+  userId: number;
+
+  @Column()
   title: string;
 
   @Column()
@@ -42,8 +45,9 @@ export class AgreementEntity {
 
 static fromModel(model: AgreementModel): AgreementEntity{
     const entity = new AgreementEntity();
-    entity.title = model.title
-    entity.description = model.description
+    entity.userId = model.userId;
+    entity.title = model.title;
+    entity.description = model.description;
     entity.skills = model.skills;
     entity.validFrom = model.validFrom;
     entity.validUntil = model.validUntil;
@@ -57,6 +61,7 @@ static fromModel(model: AgreementModel): AgreementEntity{
   toModel(): AgreementModel {
     return new AgreementModel({
       id: this.id,
+      userId: this.userId,
       title: this.title,
       description: this.description,
       skills: this.skills,

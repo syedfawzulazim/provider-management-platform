@@ -22,6 +22,11 @@
                 },
                 "tags": [
                     "agreement"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
                 ]
             },
             "get": {
@@ -34,6 +39,11 @@
                 },
                 "tags": [
                     "agreement"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
                 ]
             }
         },
@@ -128,7 +138,7 @@
             "CreateAgreementDto": {
                 "type": "object",
                 "properties": {
-                    "id": {
+                    "userId": {
                         "type": "number"
                     },
                     "title": {
@@ -165,7 +175,7 @@
                     }
                 },
                 "required": [
-                    "id",
+                    "userId",
                     "title",
                     "description",
                     "skills",
