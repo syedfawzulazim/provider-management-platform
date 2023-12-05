@@ -1,6 +1,42 @@
 {
     "openapi": "3.0.0",
     "paths": {
+        "/agreement": {
+            "post": {
+                "operationId": "AgreementController_saveAgreement",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAgreementDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "agreement"
+                ]
+            },
+            "get": {
+                "operationId": "AgreementController_getAllAgreement",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "agreement"
+                ]
+            }
+        },
         "/auth/signup": {
             "post": {
                 "operationId": "AuthController_signup",
@@ -19,7 +55,10 @@
                     "201": {
                         "description": ""
                     }
-                }
+                },
+                "tags": [
+                    "authentication"
+                ]
             }
         },
         "/auth/signin": {
@@ -40,7 +79,10 @@
                     "201": {
                         "description": ""
                     }
-                }
+                },
+                "tags": [
+                    "authentication"
+                ]
             }
         }
     },
@@ -61,13 +103,117 @@
             }
         },
         "schemas": {
+            "DeadlineDto": {
+                "type": "object",
+                "properties": {
+                    "deadline": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "teamDeadline": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "contractDeadline": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "deadline",
+                    "teamDeadline",
+                    "contractDeadline"
+                ]
+            },
+            "CreateAgreementDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "skills": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "validFrom": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "validUntil": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "cycle": {
+                        "type": "string"
+                    },
+                    "materialGroup": {
+                        "type": "string"
+                    },
+                    "dailyRateIndicator": {
+                        "type": "string"
+                    },
+                    "deadline": {
+                        "$ref": "#/components/schemas/DeadlineDto"
+                    }
+                },
+                "required": [
+                    "id",
+                    "title",
+                    "description",
+                    "skills",
+                    "validFrom",
+                    "validUntil",
+                    "cycle",
+                    "materialGroup",
+                    "dailyRateIndicator",
+                    "deadline"
+                ]
+            },
             "SignupDto": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "firstName",
+                    "lastName",
+                    "email",
+                    "password"
+                ]
             },
             "SigninDto": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "email",
+                    "password"
+                ]
             }
         }
     }

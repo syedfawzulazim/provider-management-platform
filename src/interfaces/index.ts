@@ -1,1 +1,1 @@
-export * from "./signinTokenResponse"
+export * from "./interface"
