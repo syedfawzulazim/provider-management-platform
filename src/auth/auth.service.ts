@@ -5,7 +5,8 @@ import { UserEntity } from "../entities/user.entity";
 import { UserModel } from "../models/user.model";
 import * as bcrypt from 'bcrypt';
 import { JwtService } from "@nestjs/jwt";
-import { SigninTokenResponse } from "../interfaces";
+import { ISigninTokenResponse } from "../interfaces";
+import { JWT_SECRET } from "../constants/constants";
 
 @Injectable({})
 export class AuthService{
@@ -14,11 +15,11 @@ export class AuthService{
     private readonly jwt: JwtService,
   ) {}
 
-  async signup(dto: SignupDto): Promise<SigninTokenResponse>{
+  async signup(dto: SignupDto): Promise<ISigninTokenResponse>{
 
     try {
       const user = await this.manager.findOne(UserEntity, {email: dto.email});
-      if (!user){
+      if (user){
         throw new HttpException('Email address already Taken...', HttpStatus.CONFLICT);
       }
 
@@ -59,7 +60,7 @@ export class AuthService{
   async signinToken(
     userId: number,
     email: string
-  ): Promise<SigninTokenResponse> {
+  ): Promise<ISigninTokenResponse> {
     const payload = {
       sub: userId,
       email,
@@ -67,7 +68,7 @@ export class AuthService{
     try {
       const token = await this.jwt.signAsync(payload, {
         expiresIn: '200m',
-        secret: 'secret-key-signature',
+        secret: JWT_SECRET,
       });
       return {
         userId: userId,
