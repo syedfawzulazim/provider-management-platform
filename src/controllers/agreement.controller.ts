@@ -7,11 +7,10 @@ import { AuthGuard } from "../auth/guard/auth.guard";
 @ApiBearerAuth()
 @ApiTags('agreement')
 @Controller('agreement')
+//@UseGuards(AuthGuard)
 export class AgreementController {
-
   constructor(private readonly agreementService: AgreementService) {}
 
-  @UseGuards(AuthGuard)
   @Post()
   async saveAgreement(@Body() dto: CreateAgreementDto){
       return await this.agreementService.create(dto);
@@ -19,6 +18,6 @@ export class AgreementController {
 
   @Get()
   async getAllAgreement(){
-
+return await this.agreementService.getAll()
   }
 }

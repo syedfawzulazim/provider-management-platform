@@ -6,8 +6,8 @@ export class AgreementModel {
   title: string;
   description: string;
   skills: string[];
-  validFrom: Date;
-  validUntil: Date;
+  validFrom: string;
+  validUntil: string;
   cycle: string;
   materialGroup: string;
   dailyRateIndicator: string;
