@@ -117,15 +117,12 @@
                 "type": "object",
                 "properties": {
                     "deadline": {
-                        "format": "date-time",
                         "type": "string"
                     },
                     "teamDeadline": {
-                        "format": "date-time",
                         "type": "string"
                     },
                     "contractDeadline": {
-                        "format": "date-time",
                         "type": "string"
                     }
                 },
@@ -154,11 +151,9 @@
                         }
                     },
                     "validFrom": {
-                        "format": "date-time",
                         "type": "string"
                     },
                     "validUntil": {
-                        "format": "date-time",
                         "type": "string"
                     },
                     "cycle": {

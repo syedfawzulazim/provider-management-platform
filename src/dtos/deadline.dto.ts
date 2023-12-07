@@ -1,20 +1,16 @@
-import { IsDate } from "class-validator";
+import {IsDateString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
-import { Transform } from "class-transformer";
 
 export class DeadlineDto {
   @ApiProperty()
-  @IsDate()
-  @Transform(({ value }) => new Date(value))
-  deadline: Date;
+  @IsDateString()
+  deadline: string;
 
   @ApiProperty()
-  @IsDate()
-  @Transform(({ value }) => new Date(value))
-  teamDeadline: Date;
+  @IsDateString()
+  teamDeadline: string;
 
   @ApiProperty()
-  @IsDate()
-  @Transform(({ value }) => new Date(value))
-  contractDeadline: Date;
+  @IsDateString()
+  contractDeadline: string;
 }

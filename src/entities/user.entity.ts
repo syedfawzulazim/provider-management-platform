@@ -22,6 +22,7 @@ export class UserEntity {
   @Column({ default: false })
   isSuperAdmin: boolean;
 
+
   @CreateDateColumn()
   createdAt: Date;
 

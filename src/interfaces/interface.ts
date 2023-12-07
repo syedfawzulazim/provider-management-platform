@@ -5,7 +5,7 @@ export interface ISigninTokenResponse {
 }
 
 export interface IDeadline {
-  deadline: Date;
-  teamDeadline: Date;
-  contractDeadline: Date;
+  deadline: string;
+  teamDeadline: string;
+  contractDeadline: string;
 }

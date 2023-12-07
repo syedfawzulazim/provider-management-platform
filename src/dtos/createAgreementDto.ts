@@ -1,5 +1,5 @@
 import { DeadlineDto } from "../dtos";
-import { IsArray, IsDate, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator";
+import { IsArray, IsDate, IsDateString, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { Transform, Type } from "class-transformer";
 import { CreateDateColumn } from "typeorm";
@@ -26,14 +26,12 @@ export class CreateAgreementDto {
   skills: string[];
 
   @ApiProperty()
-  @IsDate()
-  @Transform(({ value }) => new Date(value))
-  validFrom: Date;
+  @IsDateString()
+  validFrom: string;
 
   @ApiProperty()
-  @IsDate()
-  @Transform(({ value }) => new Date(value))
-  validUntil: Date;
+  @IsDateString()
+  validUntil: string;
 
   @ApiProperty()
   @IsNotEmpty()
