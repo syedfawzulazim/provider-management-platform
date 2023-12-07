@@ -1,8 +1,8 @@
 import { DeadlineDto } from "../dtos";
-import { IsArray, IsDate, IsDateString, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator";
-import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { Transform, Type } from "class-transformer";
-import { CreateDateColumn } from "typeorm";
+import { IsArray, IsDateString, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
+import { Type } from "class-transformer";
+
 
 export class CreateAgreementDto {
   @ApiProperty()

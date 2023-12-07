@@ -9,12 +9,16 @@ export class AgreementService{
   constructor(private agreementRepository: AgreementRepository) {
   }
 
-  async create(dto: DeepPartial<AgreementModel>){
+  async create(dto: DeepPartial<AgreementModel>):Promise<AgreementModel>{
     const agreement = ModelFactory.create(AgreementModel, dto);
     return await this.agreementRepository.insert(agreement);
   }
 
-  async getAll(){
+  async getAll():Promise<AgreementModel[]>{
     return await this.agreementRepository.getAll();
+  }
+
+  async getAgreementById(id: number):Promise<AgreementModel>{
+    return await this.agreementRepository.findOne(id);
   }
 }

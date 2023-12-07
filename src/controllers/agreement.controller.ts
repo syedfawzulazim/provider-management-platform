@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, NotFoundException, Param, Post, UseGuards } from "@nestjs/common";
 import { CreateAgreementDto } from "../dtos";
-import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiTags } from "@nestjs/swagger";
 import { AgreementService } from "../services/agreement.service";
 import { AuthGuard } from "../auth/guard/auth.guard";
+import { AgreementModel } from "../models/agreement.model";
 
 @ApiBearerAuth()
 @ApiTags('agreement')
@@ -12,12 +13,23 @@ export class AgreementController {
   constructor(private readonly agreementService: AgreementService) {}
 
   @Post()
-  async saveAgreement(@Body() dto: CreateAgreementDto){
+  async saveAgreement(@Body() dto: CreateAgreementDto):Promise<AgreementModel>{
       return await this.agreementService.create(dto);
   }
 
   @Get()
-  async getAllAgreement(){
-return await this.agreementService.getAll()
+  async getAllAgreement():Promise<AgreementModel[]>{
+    return await this.agreementService.getAll()
+  }
+
+  @Get('/:id')
+  async getAgreementById(@Param('id') id: number):Promise<AgreementModel>{
+    const agreement = await this.agreementService.getAgreementById(id);
+
+    if(!agreement){
+      throw new NotFoundException(`Could not find agreement with id: ${id}`);
+    }
+
+    return agreement;
   }
 }

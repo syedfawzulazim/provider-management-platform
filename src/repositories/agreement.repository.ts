@@ -8,18 +8,21 @@ export class AgreementRepository{
   constructor(private readonly manager: EntityManager) {
   }
 
-  async insert(agreement: AgreementModel){
+  async insert(agreement: AgreementModel):Promise<AgreementModel>{
     const agreementEntity = await this.manager.save<AgreementEntity>(
       await this.manager.create<AgreementEntity>(
       AgreementEntity,
       AgreementEntity.fromModel(agreement),
       ),
     );
-    console.log(agreementEntity)
     return agreementEntity.toModel();
   }
 
-  async getAll(){
-console.log(123)
+  async getAll(): Promise<AgreementModel[]>{
+    return await this.manager.find(AgreementEntity);
+  }
+
+  async findOne(id: number): Promise<AgreementModel>{
+    return await this.manager.findOne(AgreementEntity, id);
   }
 }
