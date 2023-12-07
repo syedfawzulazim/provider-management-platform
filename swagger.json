@@ -75,6 +75,44 @@
                 ]
             }
         },
+        "/agreement/update/{id}": {
+            "put": {
+                "operationId": "AgreementController_updateAgreementById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateAgreementDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "agreement"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
         "/auth/signup": {
             "post": {
                 "operationId": "AuthController_signup",
@@ -209,6 +247,10 @@
                     "dailyRateIndicator",
                     "deadline"
                 ]
+            },
+            "UpdateAgreementDto": {
+                "type": "object",
+                "properties": {}
             },
             "SignupDto": {
                 "type": "object",

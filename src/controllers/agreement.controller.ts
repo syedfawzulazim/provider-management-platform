@@ -1,9 +1,10 @@
-import { Body, Controller, Get, NotFoundException, Param, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, NotFoundException, Param, Post, Put, UseGuards } from "@nestjs/common";
 import { CreateAgreementDto } from "../dtos";
 import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiTags } from "@nestjs/swagger";
 import { AgreementService } from "../services/agreement.service";
 import { AuthGuard } from "../auth/guard/auth.guard";
 import { AgreementModel } from "../models/agreement.model";
+import { UpdateAgreementDto } from "../dtos/updateAgreementDto";
 
 @ApiBearerAuth()
 @ApiTags('agreement')
@@ -24,12 +25,14 @@ export class AgreementController {
 
   @Get('/:id')
   async getAgreementById(@Param('id') id: number):Promise<AgreementModel>{
-    const agreement = await this.agreementService.getAgreementById(id);
+    return await this.agreementService.getAgreementById(id);
+  }
 
-    if(!agreement){
-      throw new NotFoundException(`Could not find agreement with id: ${id}`);
-    }
-
-    return agreement;
+  @Put('update/:id')
+  async updateAgreementById(
+    @Param('id') id: number,
+    @Body() updateAgreementDto: UpdateAgreementDto)
+  {
+    return await this.agreementService.updateAgreementById(id, updateAgreementDto);
   }
 }
