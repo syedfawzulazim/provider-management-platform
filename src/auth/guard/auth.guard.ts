@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
-import { JWT_SECRET } from "../../constants/constants";
+import { JWT_SECRET } from "../../constants";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
       throw new UnauthorizedException();
     }
     try {
-   await this.jwtService.verifyAsync(
+      await this.jwtService.verifyAsync(
         token,
         {
           secret: JWT_SECRET,
@@ -28,6 +28,7 @@ export class AuthGuard implements CanActivate {
     } catch {
       throw new UnauthorizedException();
     }
+    console.log(request);
     return true;
   }
 

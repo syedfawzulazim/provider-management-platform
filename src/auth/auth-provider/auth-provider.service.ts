@@ -1,24 +1,24 @@
 import { HttpException, HttpStatus, Injectable, ForbiddenException } from "@nestjs/common";
 import { SignupDto, SigninDto } from "src/dtos";
 import { EntityManager } from "typeorm";
-import { UserEntity } from "../entities/user.entity";
-import { UserModel } from "../models/user.model";
 import * as bcrypt from 'bcrypt';
 import { JwtService } from "@nestjs/jwt";
-import { ISigninTokenResponse } from "../interfaces";
-import { JWT_SECRET } from "../constants/constants";
+import { ISigninTokenResponse } from "../../interfaces";
+import { JWT_SECRET } from "../../constants";
+import { ProviderEntity } from "../../entities";
+import { ProviderSignupDto } from "../../dtos/provider-signup.dto";
 
 @Injectable({})
-export class AuthService{
+export class AuthProviderService {
   constructor(
     private readonly manager: EntityManager,
     private readonly jwt: JwtService,
   ) {}
 
-  async signup(dto: SignupDto): Promise<ISigninTokenResponse>{
+  async signup(dto: ProviderSignupDto): Promise<ISigninTokenResponse>{
 
     try {
-      const user = await this.manager.findOne(UserEntity, {email: dto.email});
+      const user = await this.manager.findOne(ProviderEntity, {email: dto.email});
       if (user){
         throw new HttpException('Email address already Taken...', HttpStatus.CONFLICT);
       }
@@ -29,11 +29,11 @@ export class AuthService{
       const hash = await bcrypt.hash(dto.password, salt);
       dto.password = hash;
 
-      //sava user to db
-      const userEntity = this.manager.create(UserEntity, UserEntity.fromModel(dto));
-      const savedUserEntity = await this.manager.save(UserEntity, userEntity);
+      //save provider to db
+      const providerEntity = this.manager.create(ProviderEntity, ProviderEntity.fromModel(dto));
+      const savedProviderEntity = await this.manager.save(ProviderEntity, providerEntity);
 
-      return this.signinToken(savedUserEntity.id, savedUserEntity.email);
+      return this.signinToken(savedProviderEntity.id, savedProviderEntity.email);
     }
     catch (error) {
       throw error;
@@ -42,7 +42,7 @@ export class AuthService{
 
   async signin(dto: SigninDto){
     try{
-      const user = await this.manager.findOne(UserEntity, {email: dto.email});
+      const user = await this.manager.findOne(ProviderEntity, {email: dto.email});
       if (!user){
         throw new HttpException('User not found', HttpStatus.NOT_FOUND);
       }

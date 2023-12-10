@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { UserModel } from "../models/user.model";
+import { UserModel } from "../models";
 import { SignupDto } from "../dtos";
 
 @Entity({name: 'user'})
