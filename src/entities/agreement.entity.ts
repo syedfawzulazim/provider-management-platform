@@ -1,7 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { IDeadline } from "../interfaces";
 import { AgreementModel } from "../models/agreement.model";
-import { DeadlineDto } from "../dtos";
 
 @Entity({name: 'agreement'})
 export class AgreementEntity {
