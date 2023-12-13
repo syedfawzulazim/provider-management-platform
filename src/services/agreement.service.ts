@@ -27,7 +27,7 @@ export class AgreementService{
     return agreement;
   }
 
-  async updateAgreementById(id: number, dto: UpdateAgreementDto){
+  async updateAgreementById(id: number, dto: UpdateAgreementDto): Promise<AgreementModel>{
     const updatedAgreement = ModelFactory.create(AgreementModel, dto);
     const agreement = await this.agreementRepository.findOne(id);
     if (!agreement){

@@ -93,7 +93,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/UpdateAgreementDto"
+                                "$ref": "#/components/schemas/CreateAgreementDto"
                             }
                         }
                     }
@@ -295,10 +295,6 @@
                     "dailyRateIndicator",
                     "deadline"
                 ]
-            },
-            "UpdateAgreementDto": {
-                "type": "object",
-                "properties": {}
             },
             "SignupDto": {
                 "type": "object",

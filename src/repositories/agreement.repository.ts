@@ -29,12 +29,12 @@ export class AgreementRepository{
     return await this.manager.findOne(AgreementEntity, id);
   }
 
-  async update(id: number, updatedAgreement: AgreementModel): Promise<void> {
-    const x= await this.manager.update<AgreementEntity>(
+  async update(id: number, updatedAgreement: AgreementModel): Promise<AgreementModel> {
+    await this.manager.update<AgreementEntity>(
       AgreementEntity,
       id,
       AgreementEntity.fromModel(updatedAgreement),
     );
-    console.log()
+    return await this.manager.findOne(AgreementEntity, id);
   }
 }
