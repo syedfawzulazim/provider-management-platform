@@ -5,7 +5,7 @@ import { UserEntity } from "../../entities/user.entity";
 import * as bcrypt from 'bcrypt';
 import { JwtService } from "@nestjs/jwt";
 import { ISigninTokenResponse } from "../../interfaces";
-import { JWT_SECRET } from "../../constants/constants";
+import { JWT_SECRET_USER } from "../../constants/constants";
 
 @Injectable({})
 export class AuthService{
@@ -67,7 +67,7 @@ export class AuthService{
     try {
       const token = await this.jwt.signAsync(payload, {
         expiresIn: '200m',
-        secret: JWT_SECRET,
+        secret: JWT_SECRET_USER,
       });
       return {
         userId: userId,

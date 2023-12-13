@@ -134,6 +134,11 @@
                 },
                 "tags": [
                     "authentication"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
                 ]
             }
         },
@@ -158,10 +163,15 @@
                 },
                 "tags": [
                     "authentication"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
                 ]
             }
         },
-        "/auth/provider/signup": {
+        "/provider/auth/signup": {
             "post": {
                 "operationId": "AuthProviderController_signup",
                 "parameters": [],
@@ -182,10 +192,15 @@
                 },
                 "tags": [
                     "authentication-provider"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
                 ]
             }
         },
-        "/auth/provider/signin": {
+        "/provider/auth/signin": {
             "post": {
                 "operationId": "AuthProviderController_signin",
                 "parameters": [],
@@ -206,6 +221,11 @@
                 },
                 "tags": [
                     "authentication-provider"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
                 ]
             }
         }

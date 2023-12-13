@@ -3,8 +3,8 @@ import { SignupDto, SigninDto } from "src/dtos";
 import { EntityManager } from "typeorm";
 import * as bcrypt from 'bcrypt';
 import { JwtService } from "@nestjs/jwt";
-import { ISigninTokenResponse } from "../../interfaces";
-import { JWT_SECRET } from "../../constants";
+import { IProviderSignedUpResponse, ISigninTokenResponse } from "../../interfaces";
+import { JWT_SECRET_PROVIDER } from "../../constants";
 import { ProviderEntity } from "../../entities";
 import { ProviderSignupDto } from "../../dtos/provider-signup.dto";
 
@@ -15,7 +15,7 @@ export class AuthProviderService {
     private readonly jwt: JwtService,
   ) {}
 
-  async signup(dto: ProviderSignupDto): Promise<ISigninTokenResponse>{
+  async signup(dto: ProviderSignupDto): Promise<IProviderSignedUpResponse>{
 
     try {
       const user = await this.manager.findOne(ProviderEntity, {email: dto.email});
@@ -33,7 +33,10 @@ export class AuthProviderService {
       const providerEntity = this.manager.create(ProviderEntity, ProviderEntity.fromModel(dto));
       const savedProviderEntity = await this.manager.save(ProviderEntity, providerEntity);
 
-      return this.signinToken(savedProviderEntity.id, savedProviderEntity.email);
+      return {
+        providerId: savedProviderEntity.id,
+        email: savedProviderEntity.email,
+      }
     }
     catch (error) {
       throw error;
@@ -68,7 +71,7 @@ export class AuthProviderService {
     try {
       const token = await this.jwt.signAsync(payload, {
         expiresIn: '200m',
-        secret: JWT_SECRET,
+        secret: JWT_SECRET_PROVIDER,
       });
       return {
         userId: userId,

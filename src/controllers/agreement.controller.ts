@@ -4,12 +4,11 @@ import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiProperty, ApiTags } from "@n
 import { AgreementService } from "../services/agreement.service";
 import { AuthGuard } from "../auth/guard/auth.guard";
 import { AgreementModel } from "../models/agreement.model";
-import { UpdateAgreementDto } from "../dtos/updateAgreementDto";
 
 @ApiBearerAuth()
 @ApiTags('agreement')
 @Controller('agreement')
-//@UseGuards(AuthGuard)
+@UseGuards(AuthGuard)
 export class AgreementController {
   constructor(private readonly agreementService: AgreementService) {}
 

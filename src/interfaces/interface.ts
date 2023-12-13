@@ -9,3 +9,8 @@ export interface IDeadline {
   teamDeadline: string;
   contractDeadline: string;
 }
+
+export interface IProviderSignedUpResponse{
+  providerId: number,
+  email: string,
+}
