@@ -8,10 +8,10 @@ import { AgreementModel } from "../models/agreement.model";
 @ApiBearerAuth()
 @ApiTags('agreement')
 @Controller('agreement')
-@UseGuards(AuthGuard)
 export class AgreementController {
   constructor(private readonly agreementService: AgreementService) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   async saveAgreement(@Body() dto: CreateAgreementDto):Promise<AgreementModel>{
       return await this.agreementService.create(dto);
@@ -27,6 +27,7 @@ export class AgreementController {
     return await this.agreementService.getAgreementById(id);
   }
 
+  @UseGuards(AuthGuard)
   @Put('update/:id')
   async updateAgreementById(
     @Param('id') id: number,
