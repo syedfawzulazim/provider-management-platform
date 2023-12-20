@@ -246,6 +246,75 @@
                 ]
             }
         },
+        "/materialGroup": {
+            "post": {
+                "operationId": "MaterialGroupController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateMaterialGroupDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "materialGroup"
+                ]
+            },
+            "get": {
+                "operationId": "MaterialGroupController_getAll",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "materialGroup"
+                ]
+            }
+        },
+        "/materialGroup/update/{id}": {
+            "put": {
+                "operationId": "MaterialGroupController_updateOfferById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateMaterialGroupDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "materialGroup"
+                ]
+            }
+        },
         "/auth/signup": {
             "post": {
                 "operationId": "AuthController_signup",
@@ -473,6 +542,25 @@
                     "skills",
                     "experienceLevel",
                     "salary"
+                ]
+            },
+            "CreateMaterialGroupDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name",
+                    "description",
+                    "price"
                 ]
             },
             "SignupDto": {

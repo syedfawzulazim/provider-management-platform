@@ -1,9 +1,9 @@
 import { Body, Controller, Get, NotFoundException, Param, Post, Put, UseGuards } from "@nestjs/common";
-import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiProperty, ApiTags } from "@nestjs/swagger";
+import { ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "../auth/guard/auth.guard";
 import { CreateOfferDto } from "../dtos/offer.dto";
 import { OfferModel } from "../models";
-import { OfferService } from "../services/offer.service";
+import { OfferService } from "../services";
 import { DeepPartial } from "typeorm";
 
 // @ApiBearerAuth()
