@@ -16,8 +16,6 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
     const url : string = request.url;
-    //url.includes('provider') ?
-    //             JWT_SECRET_PROVIDER :
 
     if (!token) {
       throw new UnauthorizedException();

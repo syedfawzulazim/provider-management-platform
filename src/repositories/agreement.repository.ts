@@ -1,10 +1,7 @@
 import { EntityManager } from "typeorm";
-import { AgreementModel } from "../models/agreement.model";
+import { AgreementModel } from "../models";
 import { Injectable } from "@nestjs/common";
-import { AgreementEntity } from "../entities/agreement.entity";
-import { UpdateAgreementDto } from "../dtos/updateAgreementDto";
-import { CreateAgreementDto } from "../dtos";
-import { compareSync } from "bcrypt";
+import { AgreementEntity } from "../entities";
 
 @Injectable()
 export class AgreementRepository{

@@ -113,6 +113,139 @@
                 ]
             }
         },
+        "/offer/provider/{id}": {
+            "post": {
+                "operationId": "OfferController_create",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateOfferDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "offer"
+                ]
+            },
+            "get": {
+                "operationId": "OfferController_getOfferByProviderId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "offer"
+                ]
+            }
+        },
+        "/offer/agreement/{id}": {
+            "get": {
+                "operationId": "OfferController_getAllOfferByAgreementId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "offer"
+                ]
+            }
+        },
+        "/offer/{id}": {
+            "get": {
+                "operationId": "OfferController_getOfferById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "offer"
+                ]
+            }
+        },
+        "/offer/update/{id}": {
+            "put": {
+                "operationId": "OfferController_updateOfferById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateOfferDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "offer"
+                ]
+            }
+        },
         "/auth/signup": {
             "post": {
                 "operationId": "AuthController_signup",
@@ -314,6 +447,32 @@
                     "materialGroup",
                     "dailyRateIndicator",
                     "deadline"
+                ]
+            },
+            "CreateOfferDto": {
+                "type": "object",
+                "properties": {
+                    "agreementId": {
+                        "type": "number"
+                    },
+                    "skills": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "experienceLevel": {
+                        "type": "string"
+                    },
+                    "salary": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "agreementId",
+                    "skills",
+                    "experienceLevel",
+                    "salary"
                 ]
             },
             "SignupDto": {

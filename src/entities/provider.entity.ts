@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
 import { ProviderModel } from "../models";
-import { ProviderSignupDto } from "../dtos/provider-signup.dto";
+import { OfferEntity } from "./offer.entity";
+import { ProviderResponseDto } from "../dtos";
 
 @Entity({name: 'provider'})
 export class ProviderEntity {
@@ -37,7 +38,10 @@ export class ProviderEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  static fromModel(model: ProviderSignupDto): ProviderEntity{
+  @OneToMany(() => OfferEntity, (offer) => offer.provider)
+  offers: OfferEntity[]
+
+  static fromModel(model: ProviderModel): ProviderEntity{
     const entity = new ProviderEntity();
     entity.email = model.email;
     entity.password = model.password;
@@ -64,5 +68,18 @@ export class ProviderEntity {
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     })
+  }
+
+  toDto(): ProviderResponseDto {
+    return {
+      id: this.id,
+      email: this.email,
+      name: this.name,
+      address: this.address,
+      existsSince: this.existsSince,
+      validFrom: this.validFrom,
+      validUntil: this.validUntil,
+      masterAgreementType: this.masterAgreementType,
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { AgreementRepository } from "../repositories/agreement.repository";
 import { ModelFactory } from "../utils/model-factory";
-import { AgreementModel } from "../models/agreement.model";
+import { AgreementModel } from "../models";
 import { DeepPartial } from "typeorm";
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { UpdateAgreementDto } from "../dtos/updateAgreementDto";

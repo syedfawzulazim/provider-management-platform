@@ -7,6 +7,8 @@ import { IProviderSignedUpResponse, ISigninTokenResponse } from "../../interface
 import { JWT_SECRET_PROVIDER } from "../../constants";
 import { ProviderEntity } from "../../entities";
 import { ProviderSignupDto } from "../../dtos/provider-signup.dto";
+import { ModelFactory } from "../../utils/model-factory";
+import { ProviderModel } from "../../models";
 
 @Injectable({})
 export class AuthProviderService {
@@ -30,7 +32,8 @@ export class AuthProviderService {
       dto.password = hash;
 
       //save provider to db
-      const providerEntity = this.manager.create(ProviderEntity, ProviderEntity.fromModel(dto));
+      const provider = ModelFactory.create(ProviderModel, dto);
+      const providerEntity = this.manager.create(ProviderEntity, ProviderEntity.fromModel(provider));
       const savedProviderEntity = await this.manager.save(ProviderEntity, providerEntity);
 
       return {
