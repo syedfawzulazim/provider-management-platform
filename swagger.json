@@ -565,13 +565,21 @@
                     },
                     "salary": {
                         "type": "string"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "rule": {
+                        "type": "string"
                     }
                 },
                 "required": [
                     "agreementId",
                     "skills",
                     "experienceLevel",
-                    "salary"
+                    "salary",
+                    "category",
+                    "rule"
                 ]
             },
             "CreateMaterialGroupDto": {

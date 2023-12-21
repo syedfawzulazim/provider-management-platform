@@ -2,9 +2,7 @@ import { ModelFactory } from "../utils/model-factory";
 import { DeepPartial } from "typeorm";
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { OfferModel } from "../models";
-import { OfferRepository } from "../repositories/offer.repository";
-import { ProviderRepository } from "../repositories/provider.repository";
-import { ProviderEntity } from "../entities";
+import { OfferRepository, ProviderRepository } from "../repositories";
 
 @Injectable()
 export class OfferService{

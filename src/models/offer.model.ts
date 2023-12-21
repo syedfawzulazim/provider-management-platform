@@ -6,6 +6,8 @@ interface IOfferModel{
   skills: string[];
   experienceLevel: string;
   salary: string;
+  category: string;
+  rule: string;
   provider: ProviderModel;
   createdAt?: Date;
   updatedAt?: Date;
@@ -17,6 +19,8 @@ export class OfferModel {
   public skills: string[];
   public experienceLevel: string;
   public salary: string;
+  public category: string;
+  public rule: string;
   public provider: ProviderModel;
   public createdAt?: Date;
   public updatedAt?: Date;
@@ -27,6 +31,8 @@ export class OfferModel {
   this.skills= props.skills;
   this.experienceLevel= props.experienceLevel;
   this.salary= props.salary;
+  this.category = props.category;
+  this.rule = props.rule;
   this.provider= props.provider;
   this.createdAt= props.createdAt;
   this.updatedAt= props.createdAt;

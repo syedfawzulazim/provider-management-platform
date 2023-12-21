@@ -21,4 +21,14 @@ export class CreateOfferDto{
   @IsNotEmpty()
   @IsString()
   salary: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  category: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  rule: string;
 }

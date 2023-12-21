@@ -28,6 +28,12 @@ export class OfferEntity {
   @Column()
   salary: string;
 
+  @Column()
+  category: string
+
+  @Column()
+  rule: string
+
   @CreateDateColumn()
   createdAt: Date;
 
@@ -46,6 +52,8 @@ export class OfferEntity {
     entity.skills = model.skills;
     entity.experienceLevel = model.experienceLevel;
     entity.salary = model.salary;
+    entity.category = model.category;
+    entity.rule = model.rule;
     return entity;
   }
 
@@ -56,6 +64,8 @@ export class OfferEntity {
       skills: this.skills,
       experienceLevel: this.experienceLevel,
       salary: this.salary,
+      category: this.category,
+      rule: this.rule,
       provider: this.provider,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
@@ -69,6 +79,8 @@ export class OfferEntity {
       skills: this.skills,
       experienceLevel: this.experienceLevel,
       salary: this.salary,
+      category: this.category,
+      rule: this.rule,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     }
