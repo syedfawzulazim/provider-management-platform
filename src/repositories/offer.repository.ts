@@ -10,10 +10,10 @@ export class OfferRepository{
   }
 
   async create(offer: OfferModel, provider: ProviderEntity):Promise<DeepPartial<OfferModel>>{
-    const offerEntity = await this.manager.create<OfferEntity>(
-        OfferEntity,
-        OfferEntity.fromModel(offer),
-      )
+    const offerEntity = this.manager.create<OfferEntity>(
+      OfferEntity,
+      OfferEntity.fromModel(offer)
+    )
     offerEntity.provider = provider;
 
     const savedOfferEntity = await this.manager.save<OfferEntity>(offerEntity);
@@ -36,9 +36,11 @@ export class OfferRepository{
     return offerEntity.map(entity => entity.toDto());
   }
 
-  async findOne(id: number): Promise<DeepPartial<OfferModel>>{
-    const offerEntity = await this.manager.findOne(OfferEntity,id);
-    return offerEntity.toDto();
+  async findOne(id: number): Promise<OfferEntity>{
+    return await this.manager.findOne(OfferEntity, {
+      where: { id: id },
+      relations: ['provider'],
+    });
   }
 
   async update(id: number, offer: OfferModel){

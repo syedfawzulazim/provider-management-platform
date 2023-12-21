@@ -3,7 +3,6 @@ import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiProperty, ApiTags } from "@n
 import { MaterialGroupService } from "../services";
 import { CreateMaterialGroupDto } from "../dtos";
 
-// @ApiBearerAuth()
 @ApiTags('materialGroup')
 @Controller('materialGroup')
 export class MaterialGroupController {

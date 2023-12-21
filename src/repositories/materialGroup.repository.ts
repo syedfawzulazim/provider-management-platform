@@ -9,10 +9,10 @@ export class MaterialGroupRepository{
   }
 
   async create(materialGroup: MaterialGroupModel):Promise<MaterialGroupModel>{
-    const materialGroupEntity = await this.manager.create<MaterialGroupEntity>(
-        MaterialGroupEntity,
-      MaterialGroupEntity.fromModel(materialGroup),
-      )
+    const materialGroupEntity = this.manager.create<MaterialGroupEntity>(
+      MaterialGroupEntity,
+      MaterialGroupEntity.fromModel(materialGroup)
+    )
 
     const savedMaterialGroupEntity = await this.manager.save<MaterialGroupEntity>(materialGroupEntity);
     return savedMaterialGroupEntity.toModel();

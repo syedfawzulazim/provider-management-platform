@@ -5,10 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
-  DeepPartial
+  DeepPartial, OneToMany
 } from "typeorm";
 import { OfferModel } from "../models";
 import { ProviderEntity } from "./provider.entity";
+import { DealEntity } from "./deal.entity";
 
 @Entity({name: 'offer'})
 export class OfferEntity {
@@ -35,6 +36,9 @@ export class OfferEntity {
 
   @ManyToOne(() => ProviderEntity, (provider) => provider.offers)
   provider: ProviderEntity;
+
+  @OneToMany(() => DealEntity, (deal) => deal.offer)
+  deal: DealEntity;
 
   static fromModel(model: OfferModel): OfferEntity{
     const entity = new OfferEntity();

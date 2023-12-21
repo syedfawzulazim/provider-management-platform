@@ -24,7 +24,7 @@ export class AgreementService{
     if(!agreement){
       throw new NotFoundException(`Could not find agreement with id: ${id}`);
     }
-    return agreement;
+    return agreement.toModel();
   }
 
   async updateAgreementById(id: number, dto: UpdateAgreementDto): Promise<AgreementModel>{

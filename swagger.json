@@ -22,11 +22,6 @@
                 },
                 "tags": [
                     "agreement"
-                ],
-                "security": [
-                    {
-                        "bearer": []
-                    }
                 ]
             },
             "get": {
@@ -39,11 +34,6 @@
                 },
                 "tags": [
                     "agreement"
-                ],
-                "security": [
-                    {
-                        "bearer": []
-                    }
                 ]
             }
         },
@@ -67,11 +57,6 @@
                 },
                 "tags": [
                     "agreement"
-                ],
-                "security": [
-                    {
-                        "bearer": []
-                    }
                 ]
             }
         },
@@ -105,11 +90,6 @@
                 },
                 "tags": [
                     "agreement"
-                ],
-                "security": [
-                    {
-                        "bearer": []
-                    }
                 ]
             }
         },
@@ -315,6 +295,43 @@
                 ]
             }
         },
+        "/deal/offer/{id}": {
+            "post": {
+                "operationId": "DealController_create",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "deal"
+                ]
+            }
+        },
+        "/deal": {
+            "get": {
+                "operationId": "DealController_getAll",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "deal"
+                ]
+            }
+        },
         "/auth/signup": {
             "post": {
                 "operationId": "AuthController_signup",
@@ -336,11 +353,6 @@
                 },
                 "tags": [
                     "authentication"
-                ],
-                "security": [
-                    {
-                        "bearer": []
-                    }
                 ]
             }
         },
@@ -365,11 +377,6 @@
                 },
                 "tags": [
                     "authentication"
-                ],
-                "security": [
-                    {
-                        "bearer": []
-                    }
                 ]
             }
         },
@@ -394,11 +401,6 @@
                 },
                 "tags": [
                     "authentication-provider"
-                ],
-                "security": [
-                    {
-                        "bearer": []
-                    }
                 ]
             }
         },
@@ -423,11 +425,6 @@
                 },
                 "tags": [
                     "authentication-provider"
-                ],
-                "security": [
-                    {
-                        "bearer": []
-                    }
                 ]
             }
         }

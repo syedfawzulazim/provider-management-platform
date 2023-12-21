@@ -6,7 +6,6 @@ import { OfferModel } from "../models";
 import { OfferService } from "../services";
 import { DeepPartial } from "typeorm";
 
-// @ApiBearerAuth()
 @ApiTags('offer')
 @Controller('offer')
 export class OfferController {
@@ -38,7 +37,8 @@ export class OfferController {
   async getOfferById(
     @Param('id') offerId: number,
   ){
-    return await this.offerService.getOfferById(offerId);
+    const offer = await this.offerService.getOfferById(offerId);
+    return offer.toDto();
   }
 
   @Put('update/:id')

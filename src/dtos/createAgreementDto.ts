@@ -26,11 +26,11 @@ export class CreateAgreementDto {
   skills: string[];
 
   @ApiProperty()
-  @IsDateString()
+  @IsString()
   validFrom: string;
 
   @ApiProperty()
-  @IsDateString()
+  @IsString()
   validUntil: string;
 
   @ApiProperty()

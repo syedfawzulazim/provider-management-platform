@@ -2,6 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 import { ProviderModel } from "../models";
 import { OfferEntity } from "./offer.entity";
 import { ProviderResponseDto } from "../dtos";
+import { DealEntity } from "./deal.entity";
 
 @Entity({name: 'provider'})
 export class ProviderEntity {
@@ -39,7 +40,10 @@ export class ProviderEntity {
   updatedAt: Date;
 
   @OneToMany(() => OfferEntity, (offer) => offer.provider)
-  offers: OfferEntity[]
+  offers: OfferEntity[];
+
+  @OneToMany(() => DealEntity, (deal) => deal.provider)
+  deal: DealEntity;
 
   static fromModel(model: ProviderModel): ProviderEntity{
     const entity = new ProviderEntity();

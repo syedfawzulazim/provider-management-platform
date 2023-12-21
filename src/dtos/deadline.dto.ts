@@ -1,16 +1,16 @@
-import {IsDateString } from "class-validator";
+import { IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class DeadlineDto {
   @ApiProperty()
-  @IsDateString()
+  @IsString()
   deadline: string;
 
   @ApiProperty()
-  @IsDateString()
+  @IsString()
   teamDeadline: string;
 
   @ApiProperty()
-  @IsDateString()
+  @IsString()
   contractDeadline: string;
 }

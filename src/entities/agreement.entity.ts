@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne } from "typeorm";
 import { IDeadline } from "../interfaces";
-import { AgreementModel } from "../models/agreement.model";
+import { AgreementModel } from "../models";
+import { DealEntity } from "./deal.entity";
 
 @Entity({name: 'agreement'})
 export class AgreementEntity {
@@ -42,6 +43,9 @@ export class AgreementEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToOne(() => DealEntity, (deal) => deal.agreement)
+  deal: DealEntity;
 
 static fromModel(model: AgreementModel): AgreementEntity{
     const entity = new AgreementEntity();

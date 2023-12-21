@@ -2,10 +2,16 @@ import { Module } from '@nestjs/common';
 import { AuthModule } from "./auth/auth.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import typeOrmConfig from "./config/typeorm.config";
-import { AgreementController, OfferController, MaterialGroupController } from "./controllers";
-import { AgreementService, MaterialGroupService, OfferService } from "./services";
+import { AgreementController, OfferController, MaterialGroupController, DealController } from "./controllers";
+import { AgreementService, DealService, MaterialGroupService, OfferService } from "./services";
 import { JwtService } from "@nestjs/jwt";
-import { AgreementRepository, MaterialGroupRepository, OfferRepository, ProviderRepository } from "./repositories";
+import {
+  AgreementRepository,
+  DealRepository,
+  MaterialGroupRepository,
+  OfferRepository,
+  ProviderRepository
+} from "./repositories";
 
 @Module({
   imports: [
@@ -16,17 +22,19 @@ import { AgreementRepository, MaterialGroupRepository, OfferRepository, Provider
     AgreementController,
     OfferController,
     MaterialGroupController,
+    DealController,
   ],
   providers: [
     JwtService,
     AgreementService,
     OfferService,
     MaterialGroupService,
+    DealService,
     AgreementRepository,
     OfferRepository,
     MaterialGroupRepository,
     ProviderRepository,
-
+    DealRepository,
   ],
 })
 export class AppModule {}

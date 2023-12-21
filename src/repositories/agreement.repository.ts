@@ -10,10 +10,10 @@ export class AgreementRepository{
 
   async insert(agreement: AgreementModel):Promise<AgreementModel>{
     const agreementEntity = await this.manager.save<AgreementEntity>(
-      await this.manager.create<AgreementEntity>(
-      AgreementEntity,
-      AgreementEntity.fromModel(agreement),
-      ),
+      this.manager.create<AgreementEntity>(
+        AgreementEntity,
+        AgreementEntity.fromModel(agreement)
+      )
     );
     return agreementEntity.toModel();
   }
@@ -22,7 +22,7 @@ export class AgreementRepository{
     return await this.manager.find(AgreementEntity);
   }
 
-  async findOne(id: number): Promise<AgreementModel>{
+  async findOne(id: number): Promise<AgreementEntity>{
     return await this.manager.findOne(AgreementEntity, id);
   }
 
