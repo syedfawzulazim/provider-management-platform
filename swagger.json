@@ -332,6 +332,39 @@
                 ]
             }
         },
+        "/deal/{id}/review": {
+            "patch": {
+                "operationId": "DealController_updateOfferById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateReviewDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "deal"
+                ]
+            }
+        },
         "/auth/signup": {
             "post": {
                 "operationId": "AuthController_signup",
@@ -558,6 +591,17 @@
                     "name",
                     "description",
                     "price"
+                ]
+            },
+            "UpdateReviewDto": {
+                "type": "object",
+                "properties": {
+                    "review": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "review"
                 ]
             },
             "SignupDto": {

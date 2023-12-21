@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { AgreementRepository, DealRepository, OfferRepository } from "../repositories";
 import { DealEntity } from "../entities";
+import { UpdateReviewDto } from "../dtos";
 
 @Injectable()
 export class DealService{
@@ -27,9 +28,7 @@ export class DealService{
     return await this.dealRepository.find();
   }
 
-  // async updateById(id: number, dto: DeepPartial<MaterialGroupModel>){
-  //     const updatedMaterialGroup = ModelFactory.create(MaterialGroupModel, dto);
-  //     const materialGroup = await this.materialGroupRepository.findOne(id);
-  //     return await this.materialGroupRepository.update(materialGroup.id, updatedMaterialGroup);
-  // }
+  async giveReview(id: number, dto: UpdateReviewDto){
+      return  await this.dealRepository.saveReview(id, dto);
+  }
 }

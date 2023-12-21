@@ -2,6 +2,7 @@ import { DeepPartial, EntityManager } from "typeorm";
 import { Injectable, NotFoundException, ConflictException } from "@nestjs/common";
 import { DealModel } from "../models";
 import { DealEntity } from "../entities";
+import { UpdateReviewDto } from "../dtos";
 
 @Injectable()
 export class DealRepository{
@@ -28,13 +29,9 @@ export class DealRepository{
     const dealEntity = await this.manager.findOne(DealEntity, id);
     return dealEntity ? dealEntity.toModel() : null;
   }
-  //
-  // async update(id: number, materialGroupModel: MaterialGroupModel){
-  //   await this.manager.update<MaterialGroupModel>(
-  //     MaterialGroupEntity,
-  //     id,
-  //     MaterialGroupEntity.fromModel(materialGroupModel),
-  //   );
-  //   return await this.manager.findOne(MaterialGroupEntity, id);
-  // }
+
+  async saveReview(id: number, dto: UpdateReviewDto){
+    await this.manager.update(DealEntity, id, dto);
+    return await this.manager.findOne(DealEntity, id);
+  }
 }

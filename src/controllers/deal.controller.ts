@@ -1,6 +1,7 @@
-import { Body, Controller, Get, NotFoundException, Param, Post, Put, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, NotFoundException, Param, Patch, Post, Put, UseGuards } from "@nestjs/common";
 import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiProperty, ApiTags } from "@nestjs/swagger";
 import { DealService } from "../services";
+import { UpdateReviewDto } from "../dtos";
 
 @ApiTags('deal')
 @Controller('deal')
@@ -17,12 +18,12 @@ export class DealController {
     return await this.dealService.getAll();
   }
 
-  // @Put('update/:id')
-  // async updateOfferById(
-  //   @Param('id') materialGroupId: number,
-  //   @Body() dto: CreateMaterialGroupDto,
-  // )
-  // {
-  //   return await this.materialGroupService.updateById(materialGroupId, dto);
-  // }
+  @Patch('/:id/review')
+  async updateOfferById(
+    @Param('id') dealId: number,
+    @Body() dto: UpdateReviewDto,
+  )
+  {
+    return await this.dealService.giveReview(dealId, dto);
+  }
 }
