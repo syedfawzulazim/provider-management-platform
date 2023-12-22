@@ -1,6 +1,20 @@
 {
     "openapi": "3.0.0",
     "paths": {
+        "/health-check": {
+            "get": {
+                "operationId": "HealthCheckController_checkAppHealth",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Provider Management API is healthy"
+                    }
+                },
+                "tags": [
+                    "health-check"
+                ]
+            }
+        },
         "/agreement": {
             "post": {
                 "operationId": "AgreementController_saveAgreement",

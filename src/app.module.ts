@@ -2,7 +2,13 @@ import { Module } from '@nestjs/common';
 import { AuthModule } from "./auth/auth.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import typeOrmConfig from "./config/typeorm.config";
-import { AgreementController, OfferController, MaterialGroupController, DealController } from "./controllers";
+import {
+  AgreementController,
+  OfferController,
+  MaterialGroupController,
+  DealController,
+  HealthCheckController
+} from "./controllers";
 import { AgreementService, DealService, MaterialGroupService, OfferService } from "./services";
 import { JwtService } from "@nestjs/jwt";
 import {
@@ -19,6 +25,7 @@ import {
     TypeOrmModule.forRoot(typeOrmConfig)
   ],
   controllers: [
+    HealthCheckController,
     AgreementController,
     OfferController,
     MaterialGroupController,
