@@ -3,17 +3,6 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class ProviderSignupDto{
   @ApiProperty()
-  @IsEmail()
-  @IsNotEmpty()
-  @IsLowercase()
-  email: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  password: string;
-
-  @ApiProperty()
   @IsNotEmpty()
   @IsString()
   name: string;
@@ -24,19 +13,34 @@ export class ProviderSignupDto{
   address: string;
 
   @ApiProperty()
-  @IsDateString()
-  existsSince: string;
+  @IsNotEmpty()
+  @IsString()
+  phone: string;
 
   @ApiProperty()
-  @IsDateString()
-  validFrom: string;
+  @IsNotEmpty()
+  @IsString()
+  rule: string;
 
   @ApiProperty()
-  @IsDateString()
-  validUntil: string;
+  @IsNotEmpty()
+  @IsString()
+  contractName: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
   masterAgreementType: string;
+
+  @ApiProperty()
+  @IsString()
+  existSince: string;
+
+  @ApiProperty()
+  @IsString()
+  validFrom: string;
+
+  @ApiProperty()
+  @IsString()
+  validUntil: string;
 }

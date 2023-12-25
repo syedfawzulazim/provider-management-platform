@@ -1,9 +1,11 @@
 export class ProviderResponseDto{
   id: number;
-  email: string;
+  phone: string;
+  rule: string;
   name: string;
+  contract: string;
   address: string;
-  existsSince: string;
+  existSince: string;
   validFrom: string;
   validUntil: string;
   masterAgreementType: string

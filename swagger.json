@@ -507,7 +507,7 @@
                 ]
             }
         },
-        "/provider/auth/signup": {
+        "/provider/create": {
             "post": {
                 "operationId": "AuthProviderController_signup",
                 "parameters": [],
@@ -527,45 +527,14 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/ProviderModel"
                                 }
                             }
                         }
                     }
                 },
                 "tags": [
-                    "authentication-provider"
-                ]
-            }
-        },
-        "/provider/auth/signin": {
-            "post": {
-                "operationId": "AuthProviderController_signin",
-                "parameters": [],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SigninDto"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "authentication-provider"
+                    "provider"
                 ]
             }
         }
@@ -836,19 +805,22 @@
                     "id": {
                         "type": "number"
                     },
-                    "email": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string"
-                    },
                     "name": {
                         "type": "string"
                     },
                     "address": {
                         "type": "string"
                     },
-                    "existsSince": {
+                    "phone": {
+                        "type": "string"
+                    },
+                    "rule": {
+                        "type": "string"
+                    },
+                    "contractName": {
+                        "type": "string"
+                    },
+                    "existSince": {
                         "type": "string"
                     },
                     "validFrom": {
@@ -880,11 +852,12 @@
                 },
                 "required": [
                     "id",
-                    "email",
-                    "password",
                     "name",
                     "address",
-                    "existsSince",
+                    "phone",
+                    "rule",
+                    "contractName",
+                    "existSince",
                     "validFrom",
                     "validUntil",
                     "masterAgreementType",
@@ -1008,19 +981,25 @@
             "ProviderSignupDto": {
                 "type": "object",
                 "properties": {
-                    "email": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string"
-                    },
                     "name": {
                         "type": "string"
                     },
                     "address": {
                         "type": "string"
                     },
-                    "existsSince": {
+                    "phone": {
+                        "type": "string"
+                    },
+                    "rule": {
+                        "type": "string"
+                    },
+                    "contractName": {
+                        "type": "string"
+                    },
+                    "masterAgreementType": {
+                        "type": "string"
+                    },
+                    "existSince": {
                         "type": "string"
                     },
                     "validFrom": {
@@ -1028,21 +1007,23 @@
                     },
                     "validUntil": {
                         "type": "string"
-                    },
-                    "masterAgreementType": {
-                        "type": "string"
                     }
                 },
                 "required": [
-                    "email",
-                    "password",
                     "name",
                     "address",
-                    "existsSince",
+                    "phone",
+                    "rule",
+                    "contractName",
+                    "masterAgreementType",
+                    "existSince",
                     "validFrom",
-                    "validUntil",
-                    "masterAgreementType"
+                    "validUntil"
                 ]
+            },
+            "ProviderModel": {
+                "type": "object",
+                "properties": {}
             }
         }
     }

@@ -6,18 +6,18 @@ import { ProviderSignupDto } from "../../dtos/provider-signup.dto";
 import { AuthGuard } from "../guard/auth.guard";
 
 
-@ApiTags('authentication-provider')
-@Controller('provider/auth')
+@ApiTags('provider')
+@Controller('provider')
 export class AuthProviderController {
 constructor(private readonly authProviderService: AuthProviderService) {}
 
-  @Post('signup')
+  @Post('create')
   async signup(@Body() dto: ProviderSignupDto){
-    return await this.authProviderService.signup(dto);
+    return await this.authProviderService.create(dto);
   }
 
-  @Post('signin')
-  async signin(@Body() dto: SigninDto){
-    return await this.authProviderService.signin(dto);
-  }
+  // @Post('signin')
+  // async signin(@Body() dto: SigninDto){
+  //   return await this.authProviderService.signin(dto);
+  // }
 }

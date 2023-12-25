@@ -1,37 +1,40 @@
 interface IProviderModel{
   id: number;
-  email: string;
-  password: string
   name: string;
   address: string;
-  existsSince: string;
+  phone: string;
+  rule: string;
+  contractName: string;
+  masterAgreementType: string;
+  existSince: string;
   validFrom: string;
   validUntil: string;
-  masterAgreementType: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
 
 export class ProviderModel {
   public id: number;
-  public email: string;
-  public password: string
   public name: string;
   public address: string;
-  public existsSince: string;
+  public phone: string;
+  public rule: string
+  public contractName: string
+  public masterAgreementType: string;
+  public existSince: string;
   public validFrom: string;
   public validUntil: string;
-  public masterAgreementType: string;
   public createdAt?: Date;
   public updatedAt?: Date;
 
   constructor(props: IProviderModel) {
   this.id= props.id;
-  this.email= props.email;
-  this.password= props.password;
+  this.phone= props.phone;
+  this.rule= props.rule;
   this.name= props.name;
   this.address= props.address;
-  this.existsSince= props.existsSince;
+  this.contractName= props.contractName;
+  this.existSince= props.existSince;
   this.validFrom= props.validFrom;
   this.validUntil= props.validUntil;
   this.masterAgreementType= props.masterAgreementType;

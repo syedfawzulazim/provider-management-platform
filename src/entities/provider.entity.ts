@@ -10,19 +10,22 @@ export class ProviderEntity {
   id: number;
 
   @Column()
-  email: string;
-
-  @Column()
-  password: string
-
-  @Column()
   name: string;
 
   @Column()
-  address: string
+  address: string;
 
   @Column()
-  existsSince: string;
+  phone: string;
+
+  @Column()
+  rule: string;
+
+  @Column()
+  contractName: string;
+
+  @Column()
+  existSince: string;
 
   @Column()
   validFrom: string;
@@ -47,11 +50,12 @@ export class ProviderEntity {
 
   static fromModel(model: ProviderModel): ProviderEntity{
     const entity = new ProviderEntity();
-    entity.email = model.email;
-    entity.password = model.password;
+    entity.phone = model.phone;
+    entity.rule = model.rule;
     entity.name = model.name;
+    entity.contractName = model.contractName;
     entity.address = model.address;
-    entity.existsSince = model.existsSince;
+    entity.existSince = model.existSince;
     entity.validFrom = model.validFrom;
     entity.validUntil = model.validUntil;
     entity.masterAgreementType = model.masterAgreementType;
@@ -61,11 +65,12 @@ export class ProviderEntity {
   toModel(): ProviderModel {
     return new ProviderModel({
       id: this.id,
-      email: this.email,
-      password: this.password,
+      phone: this.phone,
+      rule: this.rule,
       name: this.name,
+      contractName: this.contractName,
       address: this.address,
-      existsSince: this.existsSince,
+      existSince: this.existSince,
       validFrom: this.validFrom,
       validUntil: this.validUntil,
       masterAgreementType: this.masterAgreementType,
@@ -77,10 +82,12 @@ export class ProviderEntity {
   toDto(): ProviderResponseDto {
     return {
       id: this.id,
-      email: this.email,
+      rule: this.rule,
+      phone: this.phone,
       name: this.name,
+      contract: this.contractName,
       address: this.address,
-      existsSince: this.existsSince,
+      existSince: this.existSince,
       validFrom: this.validFrom,
       validUntil: this.validUntil,
       masterAgreementType: this.masterAgreementType,
