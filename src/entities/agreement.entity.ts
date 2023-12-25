@@ -21,6 +21,9 @@ export class AgreementEntity {
   skill: string;
 
   @Column()
+  salary: string;
+
+  @Column()
   description: string
 
   @Column()
@@ -54,6 +57,7 @@ static fromModel(model: AgreementModel): AgreementEntity{
     entity.position = model.position;
     entity.description = model.description;
     entity.skill = model.skill;
+    entity.salary = model.salary;
     entity.cycle = model.cycle;
     entity.jobStartDate = model.jobStartDate;
     entity.jobEndDate = model.jobEndDate;
@@ -70,6 +74,7 @@ static fromModel(model: AgreementModel): AgreementEntity{
       position: this.position,
       description: this.description,
       skill: this.skill,
+      salary: this.salary,
       cycle: this.cycle,
       jobStartDate: this.jobStartDate,
       jobEndDate: this.jobEndDate,

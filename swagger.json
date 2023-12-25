@@ -571,6 +571,9 @@
                     "description": {
                         "type": "string"
                     },
+                    "salary": {
+                        "type": "string"
+                    },
                     "cycle": {
                         "type": "string"
                     },
@@ -595,6 +598,7 @@
                     "title",
                     "position",
                     "description",
+                    "salary",
                     "cycle",
                     "skill",
                     "jobStartDate",
@@ -659,6 +663,9 @@
                     "skill": {
                         "type": "string"
                     },
+                    "salary": {
+                        "type": "string"
+                    },
                     "description": {
                         "type": "string"
                     },
@@ -695,6 +702,7 @@
                     "title",
                     "position",
                     "skill",
+                    "salary",
                     "description",
                     "cycle",
                     "jobStartDate",

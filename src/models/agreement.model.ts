@@ -4,6 +4,7 @@ export class AgreementModel {
   title: string;
   position: string;
   description: string;
+  salary: string;
   skill: string;
   cycle: string;
   jobStartDate: string;

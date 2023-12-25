@@ -12,6 +12,7 @@ export class AgreementService{
 
   async create(dto: DeepPartial<AgreementModel>):Promise<AgreementModel>{
     const agreement = ModelFactory.create(AgreementModel, dto);
+    agreement.cycle = Number(agreement.salary) >= 1000 ? '2' : '1';
     return await this.agreementRepository.insert(agreement);
   }
 

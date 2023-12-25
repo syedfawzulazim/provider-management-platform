@@ -25,6 +25,11 @@ export class CreateAgreementDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
+  salary: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
   cycle: string;
 
   @ApiProperty()
