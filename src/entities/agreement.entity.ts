@@ -15,28 +15,28 @@ export class AgreementEntity {
   title: string;
 
   @Column()
+  position: string;
+
+  @Column()
+  skill: string;
+
+  @Column()
   description: string
-
-  @Column("simple-array")
-  skills: string[];
-
-  @Column()
-  validFrom: string;
-
-  @Column()
-  validUntil: string;
 
   @Column()
   cycle: string;
 
   @Column()
-  materialGroup: string;
+  jobStartDate: string;
 
   @Column()
-  dailyRateIndicator: string;
+  jobEndDate: string;
 
-  @Column("simple-json")
-  deadline: IDeadline;
+  @Column()
+  startContractDate: string;
+
+  @Column()
+  endContractDate: string;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -51,14 +51,14 @@ static fromModel(model: AgreementModel): AgreementEntity{
     const entity = new AgreementEntity();
     entity.userId = model.userId;
     entity.title = model.title;
+    entity.position = model.position;
     entity.description = model.description;
-    entity.skills = model.skills;
-    entity.validFrom = model.validFrom;
-    entity.validUntil = model.validUntil;
+    entity.skill = model.skill;
     entity.cycle = model.cycle;
-    entity.materialGroup = model.materialGroup;
-    entity.dailyRateIndicator = model.dailyRateIndicator;
-    entity.deadline = model.deadline;
+    entity.jobStartDate = model.jobStartDate;
+    entity.jobEndDate = model.jobEndDate;
+    entity.startContractDate = model.startContractDate;
+    entity.endContractDate = model.endContractDate;
     return entity;
   }
 
@@ -67,14 +67,14 @@ static fromModel(model: AgreementModel): AgreementEntity{
       id: this.id,
       userId: this.userId,
       title: this.title,
+      position: this.position,
       description: this.description,
-      skills: this.skills,
-      validFrom: this.validFrom,
-      validUntil: this.validUntil,
+      skill: this.skill,
       cycle: this.cycle,
-      materialGroup: this.materialGroup,
-      dailyRateIndicator: this.dailyRateIndicator,
-      deadline: this.deadline,
+      jobStartDate: this.jobStartDate,
+      jobEndDate: this.jobEndDate,
+      startContractDate: this.startContractDate,
+      endContractDate: this.endContractDate,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     })

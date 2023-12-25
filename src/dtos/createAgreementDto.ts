@@ -1,8 +1,5 @@
-import { DeadlineDto } from "../dtos";
-import { IsArray, IsDateString, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
-import { Type } from "class-transformer";
-
 
 export class CreateAgreementDto {
   @ApiProperty()
@@ -18,20 +15,12 @@ export class CreateAgreementDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  description: string;
+  position: string;
 
   @ApiProperty()
   @IsNotEmpty()
-  @IsArray()
-  skills: string[];
-
-  @ApiProperty()
   @IsString()
-  validFrom: string;
-
-  @ApiProperty()
-  @IsString()
-  validUntil: string;
+  description: string;
 
   @ApiProperty()
   @IsNotEmpty()
@@ -41,16 +30,25 @@ export class CreateAgreementDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  materialGroup: string;
+  skill: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  dailyRateIndicator: string;
+  jobStartDate: string;
 
-  @ApiProperty({ type: () => DeadlineDto })
-  @ValidateNested({ each: true })
-  @Type(() => DeadlineDto)
+  @ApiProperty()
   @IsNotEmpty()
-  deadline: DeadlineDto;
+  @IsString()
+  jobEndDate: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  startContractDate: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  endContractDate: string;
 }

@@ -11,7 +11,7 @@ export class AgreementController {
 
   @Post()
   async saveAgreement(@Body() dto: CreateAgreementDto):Promise<AgreementModel>{
-      return await this.agreementService.create(dto);
+    return await this.agreementService.create(dto);
   }
 
   @Get()

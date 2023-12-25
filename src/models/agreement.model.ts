@@ -1,17 +1,15 @@
-import { IDeadline } from "../interfaces";
-
 export class AgreementModel {
   id: number;
   userId: number;
   title: string;
+  position: string;
   description: string;
-  skills: string[];
-  validFrom: string;
-  validUntil: string;
+  skill: string;
   cycle: string;
-  materialGroup: string;
-  dailyRateIndicator: string;
-  deadline: IDeadline;
+  jobStartDate: string;
+  jobEndDate: string;
+  startContractDate: string;
+  endContractDate: string;
   createdAt: Date;
   updatedAt: Date;
 

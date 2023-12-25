@@ -587,25 +587,6 @@
             }
         },
         "schemas": {
-            "DeadlineDto": {
-                "type": "object",
-                "properties": {
-                    "deadline": {
-                        "type": "string"
-                    },
-                    "teamDeadline": {
-                        "type": "string"
-                    },
-                    "contractDeadline": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "deadline",
-                    "teamDeadline",
-                    "contractDeadline"
-                ]
-            },
             "CreateAgreementDto": {
                 "type": "object",
                 "properties": {
@@ -615,45 +596,42 @@
                     "title": {
                         "type": "string"
                     },
+                    "position": {
+                        "type": "string"
+                    },
                     "description": {
-                        "type": "string"
-                    },
-                    "skills": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "validFrom": {
-                        "type": "string"
-                    },
-                    "validUntil": {
                         "type": "string"
                     },
                     "cycle": {
                         "type": "string"
                     },
-                    "materialGroup": {
+                    "skill": {
                         "type": "string"
                     },
-                    "dailyRateIndicator": {
+                    "jobStartDate": {
                         "type": "string"
                     },
-                    "deadline": {
-                        "$ref": "#/components/schemas/DeadlineDto"
+                    "jobEndDate": {
+                        "type": "string"
+                    },
+                    "startContractDate": {
+                        "type": "string"
+                    },
+                    "endContractDate": {
+                        "type": "string"
                     }
                 },
                 "required": [
                     "userId",
                     "title",
+                    "position",
                     "description",
-                    "skills",
-                    "validFrom",
-                    "validUntil",
                     "cycle",
-                    "materialGroup",
-                    "dailyRateIndicator",
-                    "deadline"
+                    "skill",
+                    "jobStartDate",
+                    "jobEndDate",
+                    "startContractDate",
+                    "endContractDate"
                 ]
             },
             "AgreementModel": {
@@ -706,32 +684,29 @@
                     "title": {
                         "type": "string"
                     },
+                    "position": {
+                        "type": "string"
+                    },
+                    "skill": {
+                        "type": "string"
+                    },
                     "description": {
-                        "type": "string"
-                    },
-                    "skills": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "validFrom": {
-                        "type": "string"
-                    },
-                    "validUntil": {
                         "type": "string"
                     },
                     "cycle": {
                         "type": "string"
                     },
-                    "materialGroup": {
+                    "jobStartDate": {
                         "type": "string"
                     },
-                    "dailyRateIndicator": {
+                    "jobEndDate": {
                         "type": "string"
                     },
-                    "deadline": {
-                        "type": "object"
+                    "startContractDate": {
+                        "type": "string"
+                    },
+                    "endContractDate": {
+                        "type": "string"
                     },
                     "createdAt": {
                         "format": "date-time",
@@ -749,14 +724,14 @@
                     "id",
                     "userId",
                     "title",
+                    "position",
+                    "skill",
                     "description",
-                    "skills",
-                    "validFrom",
-                    "validUntil",
                     "cycle",
-                    "materialGroup",
-                    "dailyRateIndicator",
-                    "deadline",
+                    "jobStartDate",
+                    "jobEndDate",
+                    "startContractDate",
+                    "endContractDate",
                     "createdAt",
                     "updatedAt",
                     "deal"

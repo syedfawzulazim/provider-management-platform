@@ -1,4 +1,4 @@
-import { AgreementRepository } from "../repositories/agreement.repository";
+import { AgreementRepository } from "../repositories";
 import { ModelFactory } from "../utils/model-factory";
 import { AgreementModel } from "../models";
 import { DeepPartial } from "typeorm";
