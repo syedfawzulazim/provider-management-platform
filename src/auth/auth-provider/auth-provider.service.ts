@@ -98,9 +98,7 @@ export class AuthProviderService {
 
 
   async review(id: number, dto: UpdateReviewDto) {
-    console.log(dto.review)
     await this.manager.update(ProviderEntity, id, dto);
     return await this.manager.findOne(ProviderEntity, id);
   }
-
 }
