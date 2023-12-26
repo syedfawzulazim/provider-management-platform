@@ -19,7 +19,7 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - name: checkout to the main branch
+    - name: checkout to the main branch(develop)
       uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -27,5 +27,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Run install
       run: yarn install
-    - name: run uni test
+    - name: Run unit-test
       run: yarn test
