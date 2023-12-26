@@ -1,6 +1,7 @@
 import { UpdateReviewDto } from "./updateReview.dto";
 import { DtoFactory } from "../utils/dto-factory";
 import { plainToInstance } from "class-transformer";
+import { validateOrReject } from "class-validator";
 
 
 describe('UpdateReviewDto', () => {
@@ -24,6 +25,12 @@ describe('UpdateReviewDto', () => {
           review: review,
         }),
       );
+    });
+  });
+
+  describe('validation', () => {
+    it('validates with default test input', async () => {
+      await validateOrReject(dto);
     });
   });
 });
