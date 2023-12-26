@@ -8,6 +8,7 @@ on:
     branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
+  workflow_dispatch:
 
 jobs:
   unit-tests:
@@ -29,3 +30,7 @@ jobs:
       run: yarn install
     - name: Run unit-test
       run: yarn test
+    - name: ESLint
+      run: yarn lint
+    - name: Prettier
+      run: yarn format
