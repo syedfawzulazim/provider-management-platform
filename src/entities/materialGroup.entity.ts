@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 import { CreateMaterialGroupDto } from "../dtos";
 import { MaterialGroupModel } from "../models";
 
-@Entity({name: 'materialGroup'})
+@Entity({name: 'material_group'})
 export class MaterialGroupEntity {
   @PrimaryGeneratedColumn()
   id: number;

@@ -537,6 +537,46 @@
                     "provider"
                 ]
             }
+        },
+        "/provider/{id}/review": {
+            "post": {
+                "operationId": "AuthProviderController_review",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateReviewDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProviderEntity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "provider"
+                ]
+            }
         }
     },
     "info": {
@@ -840,6 +880,9 @@
                     "masterAgreementType": {
                         "type": "string"
                     },
+                    "review": {
+                        "type": "number"
+                    },
                     "createdAt": {
                         "format": "date-time",
                         "type": "string"
@@ -869,6 +912,7 @@
                     "validFrom",
                     "validUntil",
                     "masterAgreementType",
+                    "review",
                     "createdAt",
                     "updatedAt",
                     "offers",

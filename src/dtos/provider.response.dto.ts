@@ -5,6 +5,7 @@ export class ProviderResponseDto{
   name: string;
   contract: string;
   address: string;
+  review: number;
   existSince: string;
   validFrom: string;
   validUntil: string;

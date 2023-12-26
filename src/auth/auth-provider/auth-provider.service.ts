@@ -1,11 +1,11 @@
 import { HttpException, HttpStatus, Injectable, ForbiddenException } from "@nestjs/common";
-import { SignupDto, SigninDto } from "src/dtos";
+import { SignupDto, SigninDto, UpdateReviewDto } from "src/dtos";
 import { EntityManager } from "typeorm";
 import * as bcrypt from 'bcrypt';
 import { JwtService } from "@nestjs/jwt";
 import { IProviderSignedUpResponse, ISigninTokenResponse } from "../../interfaces";
 import { JWT_SECRET_PROVIDER } from "../../constants";
-import { ProviderEntity } from "../../entities";
+import { DealEntity, ProviderEntity } from "../../entities";
 import { ProviderSignupDto } from "../../dtos/provider-signup.dto";
 import { ModelFactory } from "../../utils/model-factory";
 import { ProviderModel } from "../../models";
@@ -88,11 +88,19 @@ export class AuthProviderService {
 
   async create(dto: ProviderSignupDto) {
     const provider = ModelFactory.create(ProviderModel, dto);
+    provider.review = 0;
     const providerEntity = this.manager.create(ProviderEntity, ProviderEntity.fromModel(provider));
     const savedProviderEntity =  await this.manager.save(ProviderEntity,
       providerEntity);
 
     return savedProviderEntity.toModel()
+  }
+
+
+  async review(id: number, dto: UpdateReviewDto) {
+    console.log(dto.review)
+    await this.manager.update(ProviderEntity, id, dto);
+    return await this.manager.findOne(ProviderEntity, id);
   }
 
 }

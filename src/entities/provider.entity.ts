@@ -36,6 +36,9 @@ export class ProviderEntity {
   @Column()
   masterAgreementType: string;
 
+  @Column("decimal", { precision: 5, scale: 2 })
+  review: number;
+
   @CreateDateColumn()
   createdAt: Date;
 
@@ -55,6 +58,7 @@ export class ProviderEntity {
     entity.name = model.name;
     entity.contractName = model.contractName;
     entity.address = model.address;
+    entity.review = model.review;
     entity.existSince = model.existSince;
     entity.validFrom = model.validFrom;
     entity.validUntil = model.validUntil;
@@ -70,6 +74,7 @@ export class ProviderEntity {
       name: this.name,
       contractName: this.contractName,
       address: this.address,
+      review: this.review,
       existSince: this.existSince,
       validFrom: this.validFrom,
       validUntil: this.validUntil,
@@ -87,6 +92,7 @@ export class ProviderEntity {
       name: this.name,
       contract: this.contractName,
       address: this.address,
+      review: this.review,
       existSince: this.existSince,
       validFrom: this.validFrom,
       validUntil: this.validUntil,

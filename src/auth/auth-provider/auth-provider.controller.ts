@@ -1,10 +1,8 @@
-import { Controller, Post, Body, UseGuards } from "@nestjs/common";
+import { Controller, Post, Body, UseGuards, Param } from "@nestjs/common";
 import { AuthProviderService } from "./auth-provider.service";
-import { SigninDto } from "src/dtos";
-import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+import { UpdateReviewDto } from "src/dtos";
+import { ApiTags } from "@nestjs/swagger";
 import { ProviderSignupDto } from "../../dtos/provider-signup.dto";
-import { AuthGuard } from "../guard/auth.guard";
-
 
 @ApiTags('provider')
 @Controller('provider')
@@ -14,6 +12,17 @@ constructor(private readonly authProviderService: AuthProviderService) {}
   @Post('create')
   async signup(@Body() dto: ProviderSignupDto){
     return await this.authProviderService.create(dto);
+  }
+
+
+
+  @Post('/:id/review')
+  async review(
+    @Param('id') id: number,
+    @Body() dto: UpdateReviewDto
+  )
+  {
+    return await this.authProviderService.review(id, dto);
   }
 
   // @Post('signin')

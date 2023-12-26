@@ -6,6 +6,7 @@ interface IProviderModel{
   rule: string;
   contractName: string;
   masterAgreementType: string;
+  review: number;
   existSince: string;
   validFrom: string;
   validUntil: string;
@@ -21,6 +22,7 @@ export class ProviderModel {
   public rule: string
   public contractName: string
   public masterAgreementType: string;
+  public review: number;
   public existSince: string;
   public validFrom: string;
   public validUntil: string;
@@ -38,6 +40,7 @@ export class ProviderModel {
   this.validFrom= props.validFrom;
   this.validUntil= props.validUntil;
   this.masterAgreementType= props.masterAgreementType;
+  this.review= props.review;
   this.createdAt= props.createdAt;
   this.updatedAt= props.createdAt;
   }
