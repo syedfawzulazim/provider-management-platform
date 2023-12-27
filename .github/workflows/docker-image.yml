@@ -24,6 +24,8 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
+        context: .
+        file: dockerfile.prod
         push: true
         tags: sfazim/provider-management:latest
     - name: Show Docker Images
