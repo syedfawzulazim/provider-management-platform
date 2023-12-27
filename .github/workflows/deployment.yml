@@ -8,6 +8,9 @@ jobs:
     runs-on: [aws-ec2]
 
     steps:
+    - name: Chown user
+      run: |
+        sudo chown -R $USER:$USER $GITHUB_WORKSPACE
     - uses: actions/checkout@v3
     - name: Pull Docker Image
       run: sudo docker pull sfazim/provider-management:latest
