@@ -13,6 +13,8 @@ jobs:
       run: sudo docker pull sfazim/provider-management:latest
     - name: Delete Old Docker Image
       run: sudo docker rm -f provider-management-container || true
+    - name: list
+      run: sudo ls
     - name: Run Docker-Compose
       run: sudo docker compose -f docker-compose.prod.yml up -d
 
