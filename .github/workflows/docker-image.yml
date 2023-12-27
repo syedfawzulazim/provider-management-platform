@@ -25,7 +25,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        file: dockerfile.prod
+        file: ./dockerfile.prod
         push: true
         tags: sfazim/provider-management:latest
     - name: Show Docker Images
