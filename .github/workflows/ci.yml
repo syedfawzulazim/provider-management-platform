@@ -20,6 +20,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16.x
+    - name: Cache
+      uses: actions/cache@v2
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
     - name: Run install
       run: yarn install
     - name: Run unit-test
