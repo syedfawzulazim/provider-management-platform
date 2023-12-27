@@ -9,8 +9,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Login to Docker Hub
-      run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Pull Docker Image
       run: sudo docker pull sfazim/provider-management:latest
     - name: Delete Old Docker Image
