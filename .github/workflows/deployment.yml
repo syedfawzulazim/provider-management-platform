@@ -22,6 +22,7 @@ jobs:
         echo DATABASE_HOST=${{ secrets.DATABASE_HOST }} >> .env
         echo DATABASE_PORT=${{ secrets.DATABASE_PORT }} >> .env
         echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
+        echo DATABASE_MIGRATION=true >> .env
         echo PORT=${{ secrets.PORT }} >> .env
         echo NAME=${{ secrets.NAME }} >> .env
     - name: Run Docker-Compose
