@@ -46,8 +46,25 @@
                 ]
             },
             "get": {
-                "operationId": "AgreementController_getAllAgreement",
-                "parameters": [],
+                "operationId": "AgreementController_getAgreementsBySalary",
+                "parameters": [
+                    {
+                        "name": "row",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "skill",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",

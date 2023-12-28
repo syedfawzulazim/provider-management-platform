@@ -1,6 +1,6 @@
-import { Body, Controller, Get, NotFoundException, Param, Post, Put, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, NotFoundException, Param, Post, Put, Query, UseGuards } from "@nestjs/common";
 import { CreateAgreementDto } from "../dtos";
-import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiProperty, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiProperty, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { AgreementService } from "../services";
 import { AgreementModel } from "../models";
 
@@ -14,9 +14,27 @@ export class AgreementController {
     return await this.agreementService.create(dto);
   }
 
+  // @Get()
+  // async getAllAgreement():Promise<AgreementModel[]>{
+  //   return await this.agreementService.getAll()
+  // }
+
+  @ApiQuery({
+    name: "row",
+    type: Number,
+    required: false
+  })
+  @ApiQuery({
+    name: "skill",
+    type: String,
+    required: false
+  })
   @Get()
-  async getAllAgreement():Promise<AgreementModel[]>{
-    return await this.agreementService.getAll()
+  async getAgreementsBySalary(
+    @Query('row') row?: number,
+    @Query('skill') skill?: string,
+  ):Promise<AgreementModel[]>{
+    return await this.agreementService.filterBySalaryAndSkill(row, skill);
   }
 
   @Get('/:id')

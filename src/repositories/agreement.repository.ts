@@ -1,4 +1,4 @@
-import { EntityManager } from "typeorm";
+import { EntityManager, Like } from "typeorm";
 import { AgreementModel } from "../models";
 import { Injectable } from "@nestjs/common";
 import { AgreementEntity } from "../entities";
@@ -19,6 +19,17 @@ export class AgreementRepository{
   }
 
   async getAll(): Promise<AgreementModel[]>{
+    return await this.manager.find(AgreementEntity);
+  }
+
+  async filterBySalaryAndSkill(row?: number, skill?: string): Promise<AgreementModel[]>{
+    if (row && skill){
+      return await this.manager.find(AgreementEntity,{
+        take: row,
+        where: {title: Like(`%${skill}%`) },
+        order: { salary: 'ASC' }
+      })
+    }
     return await this.manager.find(AgreementEntity);
   }
 

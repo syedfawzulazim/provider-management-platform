@@ -20,6 +20,10 @@ export class AgreementService{
     return await this.agreementRepository.getAll();
   }
 
+  async filterBySalaryAndSkill(row?: number, skill?: string):Promise<AgreementModel[]>{
+    return await this.agreementRepository.filterBySalaryAndSkill(row, skill);
+  }
+
   async getAgreementById(id: number):Promise<AgreementModel>{
     const agreement =  await this.agreementRepository.findOne(id);
     if(!agreement){
