@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards, Param } from "@nestjs/common";
+import { Controller, Post, Body, UseGuards, Param, Get } from "@nestjs/common";
 import { AuthProviderService } from "./auth-provider.service";
 import { UpdateReviewDto } from "src/dtos";
 import { ApiTags } from "@nestjs/swagger";
@@ -25,8 +25,13 @@ constructor(private readonly authProviderService: AuthProviderService) {}
     return await this.authProviderService.review(id, dto);
   }
 
-  // @Post('signin')
-  // async signin(@Body() dto: SigninDto){
-  //   return await this.authProviderService.signin(dto);
-  // }
+  @Get('/:id')
+  async get( @Param('id') id: number){
+    return await this.authProviderService.get(id);
+  }
+
+  @Get()
+  async getProviders(){
+    return await this.authProviderService.getProviders();
+  }
 }

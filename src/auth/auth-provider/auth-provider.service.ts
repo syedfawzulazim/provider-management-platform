@@ -101,4 +101,12 @@ export class AuthProviderService {
     await this.manager.update(ProviderEntity, id, dto);
     return await this.manager.findOne(ProviderEntity, id);
   }
+
+  async getProviders() {
+    return await this.manager.find(ProviderEntity);
+  }
+
+  async get(id: number) {
+    return await this.manager.findOne(ProviderEntity, id);
+  }
 }
