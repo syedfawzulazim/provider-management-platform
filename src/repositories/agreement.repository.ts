@@ -24,11 +24,14 @@ export class AgreementRepository{
 
   async filterBySalaryAndSkill(row?: number, skill?: string): Promise<AgreementModel[]>{
     if (row && skill){
-      return await this.manager.find(AgreementEntity,{
-        take: row,
-        where: {skill: Like(`%${skill}%`) },
-        order: { salary: 'ASC' }
-      })
+      return await this.manager
+        .createQueryBuilder(AgreementEntity, 'entity')
+        .where("entity.skill like :skill", { skill:`%${skill}%` })
+        .orderBy('CAST(entity.salary AS INTEGER)', 'ASC')
+        .take(row)
+        .getMany()
+
+
     }
     return await this.manager.find(AgreementEntity);
   }
