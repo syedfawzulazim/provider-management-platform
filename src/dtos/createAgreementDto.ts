@@ -27,6 +27,27 @@ export class CreateAgreementDto {
   @IsString()
   salary: string;
 
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  providerName: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  providerEmail: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  technologyLevel: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  role: string;
+
   @ApiProperty()
   @IsNotEmpty()
   @IsString()

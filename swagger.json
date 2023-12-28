@@ -614,6 +614,18 @@
                     "salary": {
                         "type": "string"
                     },
+                    "providerName": {
+                        "type": "string"
+                    },
+                    "providerEmail": {
+                        "type": "string"
+                    },
+                    "technologyLevel": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
                     "cycle": {
                         "type": "string"
                     },
@@ -639,6 +651,10 @@
                     "position",
                     "description",
                     "salary",
+                    "providerName",
+                    "providerEmail",
+                    "technologyLevel",
+                    "role",
                     "cycle",
                     "skill",
                     "jobStartDate",
@@ -700,6 +716,12 @@
                     "position": {
                         "type": "string"
                     },
+                    "providerName": {
+                        "type": "string"
+                    },
+                    "providerEmail": {
+                        "type": "string"
+                    },
                     "skill": {
                         "type": "string"
                     },
@@ -710,6 +732,12 @@
                         "type": "string"
                     },
                     "cycle": {
+                        "type": "string"
+                    },
+                    "technologyLevel": {
+                        "type": "string"
+                    },
+                    "role": {
                         "type": "string"
                     },
                     "jobStartDate": {
@@ -741,10 +769,14 @@
                     "userId",
                     "title",
                     "position",
+                    "providerName",
+                    "providerEmail",
                     "skill",
                     "salary",
                     "description",
                     "cycle",
+                    "technologyLevel",
+                    "role",
                     "jobStartDate",
                     "jobEndDate",
                     "startContractDate",
@@ -865,7 +897,13 @@
                     "rule": {
                         "type": "string"
                     },
-                    "contractName": {
+                    "contactName": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "email": {
                         "type": "string"
                     },
                     "existSince": {
@@ -907,7 +945,9 @@
                     "address",
                     "phone",
                     "rule",
-                    "contractName",
+                    "contactName",
+                    "role",
+                    "email",
                     "existSince",
                     "validFrom",
                     "validUntil",
@@ -1045,7 +1085,13 @@
                     "rule": {
                         "type": "string"
                     },
-                    "contractName": {
+                    "role": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "contactName": {
                         "type": "string"
                     },
                     "masterAgreementType": {
@@ -1066,7 +1112,9 @@
                     "address",
                     "phone",
                     "rule",
-                    "contractName",
+                    "role",
+                    "email",
+                    "contactName",
                     "masterAgreementType",
                     "existSince",
                     "validFrom",

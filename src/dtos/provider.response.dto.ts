@@ -3,7 +3,9 @@ export class ProviderResponseDto{
   phone: string;
   rule: string;
   name: string;
-  contract: string;
+  contactName: string;
+  role: string;
+  email: string;
   address: string;
   review: number;
   existSince: string;

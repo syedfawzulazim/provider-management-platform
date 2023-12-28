@@ -7,6 +7,10 @@ export class AgreementModel {
   salary: string;
   skill: string;
   cycle: string;
+  providerName: string;
+  providerEmail: string;
+  technologyLevel: string;
+  role: string;
   jobStartDate: string;
   jobEndDate: string;
   startContractDate: string;

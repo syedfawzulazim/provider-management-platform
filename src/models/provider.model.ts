@@ -4,7 +4,9 @@ interface IProviderModel{
   address: string;
   phone: string;
   rule: string;
-  contractName: string;
+  contactName: string;
+  email: string;
+  role: string;
   masterAgreementType: string;
   review: number;
   existSince: string;
@@ -20,7 +22,9 @@ export class ProviderModel {
   public address: string;
   public phone: string;
   public rule: string
-  public contractName: string
+  public role: string
+  public email: string
+  public contactName: string
   public masterAgreementType: string;
   public review: number;
   public existSince: string;
@@ -35,7 +39,9 @@ export class ProviderModel {
   this.rule= props.rule;
   this.name= props.name;
   this.address= props.address;
-  this.contractName= props.contractName;
+  this.contactName= props.contactName;
+  this.role= props.role;
+  this.email= props.email;
   this.existSince= props.existSince;
   this.validFrom= props.validFrom;
   this.validUntil= props.validUntil;

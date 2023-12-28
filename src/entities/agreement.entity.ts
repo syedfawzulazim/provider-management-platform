@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne } from "typeorm";
-import { IDeadline } from "../interfaces";
 import { AgreementModel } from "../models";
 import { DealEntity } from "./deal.entity";
 
@@ -18,6 +17,12 @@ export class AgreementEntity {
   position: string;
 
   @Column()
+  providerName: string;
+
+  @Column()
+  providerEmail: string;
+
+  @Column()
   skill: string;
 
   @Column()
@@ -28,6 +33,13 @@ export class AgreementEntity {
 
   @Column()
   cycle: string;
+
+  @Column()
+  technologyLevel: string;
+
+  @Column()
+  role: string;
+
 
   @Column()
   jobStartDate: string;
@@ -58,6 +70,10 @@ static fromModel(model: AgreementModel): AgreementEntity{
     entity.description = model.description;
     entity.skill = model.skill;
     entity.salary = model.salary;
+    entity.providerName = model.providerName;
+    entity.providerEmail = model.providerEmail;
+    entity.technologyLevel = model.technologyLevel;
+    entity.role = model.role;
     entity.cycle = model.cycle;
     entity.jobStartDate = model.jobStartDate;
     entity.jobEndDate = model.jobEndDate;
@@ -75,6 +91,10 @@ static fromModel(model: AgreementModel): AgreementEntity{
       description: this.description,
       skill: this.skill,
       salary: this.salary,
+      providerName: this.providerName,
+      providerEmail: this.providerEmail,
+      technologyLevel: this.technologyLevel,
+      role: this.role,
       cycle: this.cycle,
       jobStartDate: this.jobStartDate,
       jobEndDate: this.jobEndDate,

@@ -25,7 +25,17 @@ export class ProviderSignupDto{
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  contractName: string;
+  role: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  email: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  contactName: string;
 
   @ApiProperty()
   @IsNotEmpty()

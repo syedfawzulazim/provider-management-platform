@@ -22,7 +22,13 @@ export class ProviderEntity {
   rule: string;
 
   @Column()
-  contractName: string;
+  contactName: string;
+
+  @Column()
+  role: string;
+
+  @Column()
+  email: string;
 
   @Column()
   existSince: string;
@@ -56,7 +62,9 @@ export class ProviderEntity {
     entity.phone = model.phone;
     entity.rule = model.rule;
     entity.name = model.name;
-    entity.contractName = model.contractName;
+    entity.contactName = model.contactName;
+    entity.role = model.role;
+    entity.email = model.email;
     entity.address = model.address;
     entity.review = model.review;
     entity.existSince = model.existSince;
@@ -72,7 +80,9 @@ export class ProviderEntity {
       phone: this.phone,
       rule: this.rule,
       name: this.name,
-      contractName: this.contractName,
+      contactName: this.contactName,
+      role: this.role,
+      email: this.email,
       address: this.address,
       review: this.review,
       existSince: this.existSince,
@@ -90,7 +100,9 @@ export class ProviderEntity {
       rule: this.rule,
       phone: this.phone,
       name: this.name,
-      contract: this.contractName,
+      contactName: this.contactName,
+      role: this.role,
+      email: this.email,
       address: this.address,
       review: this.review,
       existSince: this.existSince,
