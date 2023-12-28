@@ -27,5 +27,5 @@ jobs:
     - name: Run Docker-Compose
       run: sudo docker compose -f docker-compose.prod.yml up -d
     - name: Delete all unused Docker Image
-      run: sudo docker image prune -a || true
+      run: sudo docker image prune -af || true
 
