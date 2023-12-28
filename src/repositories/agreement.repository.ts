@@ -26,7 +26,7 @@ export class AgreementRepository{
     if (row && skill){
       return await this.manager.find(AgreementEntity,{
         take: row,
-        where: {title: Like(`%${skill}%`) },
+        where: {skill: Like(`%${skill}%`) },
         order: { salary: 'ASC' }
       })
     }
