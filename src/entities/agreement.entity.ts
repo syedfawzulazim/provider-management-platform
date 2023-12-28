@@ -8,9 +8,6 @@ export class AgreementEntity {
   id: number;
 
   @Column()
-  userId: number;
-
-  @Column()
   title: string;
 
   @Column()
@@ -33,6 +30,12 @@ export class AgreementEntity {
 
   @Column()
   cycle: string;
+
+  @Column()
+  materialGroup: string;
+
+  @Column()
+  teamMember: string;
 
   @Column()
   technologyLevel: string;
@@ -64,7 +67,6 @@ export class AgreementEntity {
 
 static fromModel(model: AgreementModel): AgreementEntity{
     const entity = new AgreementEntity();
-    entity.userId = model.userId;
     entity.title = model.title;
     entity.position = model.position;
     entity.description = model.description;
@@ -75,6 +77,8 @@ static fromModel(model: AgreementModel): AgreementEntity{
     entity.technologyLevel = model.technologyLevel;
     entity.role = model.role;
     entity.cycle = model.cycle;
+    entity.materialGroup = model.materialGroup;
+    entity.teamMember = model.teamMember;
     entity.jobStartDate = model.jobStartDate;
     entity.jobEndDate = model.jobEndDate;
     entity.startContractDate = model.startContractDate;
@@ -85,7 +89,6 @@ static fromModel(model: AgreementModel): AgreementEntity{
   toModel(): AgreementModel {
     return new AgreementModel({
       id: this.id,
-      userId: this.userId,
       title: this.title,
       position: this.position,
       description: this.description,
@@ -94,6 +97,8 @@ static fromModel(model: AgreementModel): AgreementEntity{
       providerName: this.providerName,
       providerEmail: this.providerEmail,
       technologyLevel: this.technologyLevel,
+      materialGroup: this.materialGroup,
+      teamMember: this.teamMember,
       role: this.role,
       cycle: this.cycle,
       jobStartDate: this.jobStartDate,

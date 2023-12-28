@@ -670,9 +670,6 @@
             "CreateAgreementDto": {
                 "type": "object",
                 "properties": {
-                    "userId": {
-                        "type": "number"
-                    },
                     "title": {
                         "type": "string"
                     },
@@ -697,7 +694,10 @@
                     "role": {
                         "type": "string"
                     },
-                    "cycle": {
+                    "materialGroup": {
+                        "type": "string"
+                    },
+                    "teamMember": {
                         "type": "string"
                     },
                     "skill": {
@@ -717,7 +717,6 @@
                     }
                 },
                 "required": [
-                    "userId",
                     "title",
                     "position",
                     "description",
@@ -726,7 +725,8 @@
                     "providerEmail",
                     "technologyLevel",
                     "role",
-                    "cycle",
+                    "materialGroup",
+                    "teamMember",
                     "skill",
                     "jobStartDate",
                     "jobEndDate",
@@ -778,9 +778,6 @@
                     "id": {
                         "type": "number"
                     },
-                    "userId": {
-                        "type": "number"
-                    },
                     "title": {
                         "type": "string"
                     },
@@ -803,6 +800,12 @@
                         "type": "string"
                     },
                     "cycle": {
+                        "type": "string"
+                    },
+                    "materialGroup": {
+                        "type": "string"
+                    },
+                    "teamMember": {
                         "type": "string"
                     },
                     "technologyLevel": {
@@ -837,7 +840,6 @@
                 },
                 "required": [
                     "id",
-                    "userId",
                     "title",
                     "position",
                     "providerName",
@@ -846,6 +848,8 @@
                     "salary",
                     "description",
                     "cycle",
+                    "materialGroup",
+                    "teamMember",
                     "technologyLevel",
                     "role",
                     "jobStartDate",

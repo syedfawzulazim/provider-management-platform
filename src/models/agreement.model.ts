@@ -1,12 +1,13 @@
 export class AgreementModel {
   id: number;
-  userId: number;
   title: string;
   position: string;
   description: string;
   salary: string;
   skill: string;
   cycle: string;
+  materialGroup: string;
+  teamMember: string;
   providerName: string;
   providerEmail: string;
   technologyLevel: string;

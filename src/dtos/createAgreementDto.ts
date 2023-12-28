@@ -4,11 +4,6 @@ import { ApiProperty } from "@nestjs/swagger";
 export class CreateAgreementDto {
   @ApiProperty()
   @IsNotEmpty()
-  @IsNumber()
-  userId: number;
-
-  @ApiProperty()
-  @IsNotEmpty()
   @IsString()
   title: string;
 
@@ -51,7 +46,12 @@ export class CreateAgreementDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  cycle: string;
+  materialGroup: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  teamMember: string;
 
   @ApiProperty()
   @IsNotEmpty()
