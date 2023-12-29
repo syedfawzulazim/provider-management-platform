@@ -1,8 +1,9 @@
-import { Body, Controller, Get, NotFoundException, Param, Post, Put, Query, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, NotFoundException, Param, Patch, Post, Put, Query, UseGuards } from "@nestjs/common";
 import { CreateAgreementDto } from "../dtos";
 import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiProperty, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { AgreementService } from "../services";
 import { AgreementModel } from "../models";
+import { GiveReviewDto } from "../dtos/giveReview.dto";
 
 @ApiTags('agreement')
 @Controller('agreement')
@@ -48,5 +49,13 @@ export class AgreementController {
     @Body() dto: CreateAgreementDto):Promise<AgreementModel>
   {
     return await this.agreementService.updateAgreementById(id, dto);
+  }
+
+  @Patch('/:id/review')
+  async giveReview(
+    @Param('id') id: number,
+    @Body() dto: GiveReviewDto):Promise<AgreementModel>
+  {
+    return await this.agreementService.giveReviewById(id, dto);
   }
 }

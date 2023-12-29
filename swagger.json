@@ -155,6 +155,46 @@
                 ]
             }
         },
+        "/agreement/{id}/review": {
+            "patch": {
+                "operationId": "AgreementController_giveReview",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GiveReviewDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AgreementModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "agreement"
+                ]
+            }
+        },
         "/offer/provider/{id}": {
             "post": {
                 "operationId": "OfferController_create",
@@ -738,6 +778,23 @@
                 "type": "object",
                 "properties": {}
             },
+            "GiveReviewDto": {
+                "type": "object",
+                "properties": {
+                    "review": {
+                        "type": "number",
+                        "minimum": 1,
+                        "maximum": 5
+                    },
+                    "comment": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "review",
+                    "comment"
+                ]
+            },
             "CreateOfferDto": {
                 "type": "object",
                 "properties": {
@@ -821,6 +878,12 @@
                         "type": "string"
                     },
                     "startContractDate": {
+                        "type": "string"
+                    },
+                    "review": {
+                        "type": "number"
+                    },
+                    "comment": {
                         "type": "string"
                     },
                     "endContractDate": {

@@ -40,11 +40,17 @@ export class AgreementRepository{
     return await this.manager.findOne(AgreementEntity, id);
   }
 
-  async update(id: number, updatedAgreement: AgreementModel): Promise<AgreementModel> {
+  async update(id: number, updatedAgreementDto: AgreementModel): Promise<AgreementModel> {
+    const agreement = await this.manager.findOne(AgreementEntity, id);
+    const updatedAgreement = {
+      ...agreement,
+      ...updatedAgreementDto,
+    }
+
     await this.manager.update<AgreementEntity>(
       AgreementEntity,
       id,
-      AgreementEntity.fromModel(updatedAgreement),
+      updatedAgreement,
     );
     return await this.manager.findOne(AgreementEntity, id);
   }

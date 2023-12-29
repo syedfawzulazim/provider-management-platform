@@ -12,6 +12,8 @@ export class AgreementModel {
   providerEmail: string;
   technologyLevel: string;
   role: string;
+  review?: number;
+  comment?: string;
   jobStartDate: string;
   jobEndDate: string;
   startContractDate: string;

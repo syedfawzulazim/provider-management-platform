@@ -53,6 +53,12 @@ export class AgreementEntity {
   @Column()
   startContractDate: string;
 
+  @Column("decimal", { precision: 5, scale: 2, nullable:true })
+  review?: number;
+
+  @Column({nullable:true })
+  comment?: string;
+
   @Column()
   endContractDate: string;
 
@@ -101,6 +107,8 @@ static fromModel(model: AgreementModel): AgreementEntity{
       teamMember: this.teamMember,
       role: this.role,
       cycle: this.cycle,
+      review: this.review,
+      comment: this.comment,
       jobStartDate: this.jobStartDate,
       jobEndDate: this.jobEndDate,
       startContractDate: this.startContractDate,

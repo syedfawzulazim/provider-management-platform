@@ -4,6 +4,7 @@ import { AgreementModel } from "../models";
 import { DeepPartial } from "typeorm";
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { UpdateAgreementDto } from "../dtos/updateAgreementDto";
+import { GiveReviewDto } from "../dtos/giveReview.dto";
 
 @Injectable()
 export class AgreementService{
@@ -39,5 +40,14 @@ export class AgreementService{
       throw new NotFoundException(`Could not find agreement with id: ${id}`);
     }
     return await this.agreementRepository.update(agreement.id, updatedAgreement);
+  }
+
+  async giveReviewById(id: number, dto: GiveReviewDto): Promise<AgreementModel>{
+    const giveReview = ModelFactory.create(AgreementModel, dto);
+    const agreement = await this.agreementRepository.findOne(id);
+    if (!agreement){
+      throw new NotFoundException(`Could not find agreement with id: ${id}`);
+    }
+    return await this.agreementRepository.update(agreement.id, giveReview);
   }
 }
