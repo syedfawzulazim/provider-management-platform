@@ -1,5 +1,12 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { UserEntity, AgreementEntity, ProviderEntity, MaterialGroupEntity, DealEntity } from "../entities";
+import {
+  UserEntity,
+  AgreementEntity,
+  ProviderEntity,
+  MaterialGroupEntity,
+  DealEntity,
+  ReviewEntity
+} from "../entities";
 import { OfferEntity } from "../entities/offer.entity";
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
@@ -10,7 +17,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
   synchronize: false,
-  entities: [UserEntity, AgreementEntity, ProviderEntity, OfferEntity, MaterialGroupEntity, DealEntity],
+  entities: [UserEntity, AgreementEntity, ProviderEntity, OfferEntity, MaterialGroupEntity, DealEntity, ReviewEntity],
   autoLoadEntities: true,
   migrationsRun: process.env.DATABASE_MIGRATION === 'true',
   migrationsTableName: 'migration',

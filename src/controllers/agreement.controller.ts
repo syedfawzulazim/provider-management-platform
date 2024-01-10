@@ -2,7 +2,7 @@ import { Body, Controller, Get, NotFoundException, Param, Patch, Post, Put, Quer
 import { CreateAgreementDto } from "../dtos";
 import { ApiBearerAuth, ApiOkResponse, ApiParam, ApiProperty, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { AgreementService } from "../services";
-import { AgreementModel } from "../models";
+import { AgreementModel, ReviewModel } from "../models";
 import { GiveReviewDto } from "../dtos/giveReview.dto";
 
 @ApiTags('agreement')
@@ -51,11 +51,30 @@ export class AgreementController {
     return await this.agreementService.updateAgreementById(id, dto);
   }
 
-  @Patch('/:id/review')
+  @Post('/:id/review')
   async giveReview(
     @Param('id') id: number,
-    @Body() dto: GiveReviewDto):Promise<AgreementModel>
+    @Body() dto: GiveReviewDto):Promise<ReviewModel>
   {
     return await this.agreementService.giveReviewById(id, dto);
   }
+
+  @Get('/:id/review')
+  async getReview(
+    @Param('id') id: number,
+  )
+  {
+    return await this.agreementService.getReview(id);
+  }
+
+
+  @Get('/:id/review/avg')
+  async getAvg(
+    @Param('id') id: number,
+  )
+  {
+    return await this.agreementService.getAvg(id);
+  }
+
+
 }

@@ -1,6 +1,6 @@
 import { AgreementRepository } from "../repositories";
 import { ModelFactory } from "../utils/model-factory";
-import { AgreementModel } from "../models";
+import { AgreementModel, ReviewModel } from "../models";
 import { DeepPartial } from "typeorm";
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { UpdateAgreementDto } from "../dtos/updateAgreementDto";
@@ -42,12 +42,21 @@ export class AgreementService{
     return await this.agreementRepository.update(agreement.id, updatedAgreement);
   }
 
-  async giveReviewById(id: number, dto: GiveReviewDto): Promise<AgreementModel>{
-    const giveReview = ModelFactory.create(AgreementModel, dto);
+  async giveReviewById(id: number, dto: GiveReviewDto): Promise<ReviewModel>{
+    const giveReview = ModelFactory.create(ReviewModel, dto);
     const agreement = await this.agreementRepository.findOne(id);
     if (!agreement){
       throw new NotFoundException(`Could not find agreement with id: ${id}`);
     }
-    return await this.agreementRepository.update(agreement.id, giveReview);
+    giveReview.agreementId = agreement.id;
+    return await this.agreementRepository.review(giveReview);
+  }
+
+  async getReview(id: number){
+    return await this.agreementRepository.getReview(id);
+  }
+
+  async getAvg(id: number){
+    return await this.agreementRepository.getAvg(id);
   }
 }

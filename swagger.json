@@ -156,7 +156,7 @@
             }
         },
         "/agreement/{id}/review": {
-            "patch": {
+            "post": {
                 "operationId": "AgreementController_giveReview",
                 "parameters": [
                     {
@@ -179,12 +179,76 @@
                     }
                 },
                 "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReviewModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "agreement"
+                ]
+            },
+            "get": {
+                "operationId": "AgreementController_getReview",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
                     "200": {
                         "description": "",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/AgreementModel"
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ReviewEntity"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "agreement"
+                ]
+            }
+        },
+        "/agreement/{id}/review/avg": {
+            "get": {
+                "operationId": "AgreementController_getAvg",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ReviewEntity"
+                                    }
                                 }
                             }
                         }
@@ -793,6 +857,41 @@
                 "required": [
                     "review",
                     "comment"
+                ]
+            },
+            "ReviewModel": {
+                "type": "object",
+                "properties": {}
+            },
+            "ReviewEntity": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "agreementId": {
+                        "type": "number"
+                    },
+                    "review": {
+                        "type": "number"
+                    },
+                    "comment": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "agreementId",
+                    "createdAt",
+                    "updatedAt"
                 ]
             },
             "CreateOfferDto": {

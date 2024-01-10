@@ -3,7 +3,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { PartialType } from "@nestjs/mapped-types";
 import { CreateAgreementDto } from "./createAgreementDto";
 
-export class GiveReviewDto extends PartialType(CreateAgreementDto){
+export class GiveReviewDto{
   @ApiProperty()
   @IsNotEmpty()
   @IsNumber()

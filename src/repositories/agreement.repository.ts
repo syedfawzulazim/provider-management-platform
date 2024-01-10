@@ -1,7 +1,7 @@
 import { EntityManager, Like } from "typeorm";
-import { AgreementModel } from "../models";
+import { AgreementModel, ReviewModel } from "../models";
 import { Injectable } from "@nestjs/common";
-import { AgreementEntity } from "../entities";
+import { AgreementEntity, ReviewEntity } from "../entities";
 
 @Injectable()
 export class AgreementRepository{
@@ -54,4 +54,30 @@ export class AgreementRepository{
     );
     return await this.manager.findOne(AgreementEntity, id);
   }
+
+  async review(review: ReviewModel ){
+    const reviewEntity = await this.manager.save<ReviewEntity>(
+      this.manager.create<ReviewEntity>(
+        ReviewEntity,
+        ReviewEntity.fromModel(review)
+      )
+    );
+    return reviewEntity.toModel();
+  }
+
+  async getReview(id){
+    return await this.manager.find(ReviewEntity, {
+      where: {agreementId: id}
+    });
+  }
+
+  async getAvg(id){
+    const reviews =  await this.manager.find(ReviewEntity, {
+      where: {agreementId: id}
+    });
+
+    const sum = reviews.reduce( ( sum, { review } ) => sum + parseFloat(String(review)) , 0.00);
+    return sum/reviews.length;
+  }
+
 }
