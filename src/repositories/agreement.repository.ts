@@ -77,7 +77,7 @@ export class AgreementRepository{
     });
 
     const sum = reviews.reduce( ( sum, { review } ) => sum + parseFloat(String(review)) , 0.00);
-    return sum/reviews.length;
+    return sum ? sum/reviews.length : 0;
   }
 
 }
