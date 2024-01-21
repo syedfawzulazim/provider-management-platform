@@ -9,7 +9,8 @@ export class HealthCheckController {
   @Get('/.well-known/pki-validation/3F00D98897171B414412A628E1E4A306.txt')
   readFile(@Req() req: Request, @Res() res: Response): void {
     // Construct the path to your file
-    const path = `app/dist/src/.well-known/pki-validation/3F00D98897171B414412A628E1E4A306.txt`;
+
+    const path = `/app/dist/src/.well-known/pki-validation/3F00D98897171B414412A628E1E4A306.txt`;
     return res.sendFile(path);
   }
 }
