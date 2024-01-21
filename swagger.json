@@ -245,10 +245,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/ReviewEntity"
-                                    }
+                                    "type": "number"
                                 }
                             }
                         }
@@ -970,6 +967,9 @@
                     "role": {
                         "type": "string"
                     },
+                    "status": {
+                        "type": "string"
+                    },
                     "jobStartDate": {
                         "type": "string"
                     },
@@ -1014,6 +1014,7 @@
                     "teamMember",
                     "technologyLevel",
                     "role",
+                    "status",
                     "jobStartDate",
                     "jobEndDate",
                     "startContractDate",

@@ -43,6 +43,8 @@ export class AgreementEntity {
   @Column()
   role: string;
 
+  @Column()
+  status: string;
 
   @Column()
   jobStartDate: string;
@@ -82,6 +84,7 @@ static fromModel(model: AgreementModel): AgreementEntity{
     entity.providerEmail = model.providerEmail;
     entity.technologyLevel = model.technologyLevel;
     entity.role = model.role;
+    entity.status = model.status;
     entity.cycle = model.cycle;
     entity.materialGroup = model.materialGroup;
     entity.teamMember = model.teamMember;
@@ -106,6 +109,7 @@ static fromModel(model: AgreementModel): AgreementEntity{
       materialGroup: this.materialGroup,
       teamMember: this.teamMember,
       role: this.role,
+      status: this.status,
       cycle: this.cycle,
       review: this.review,
       comment: this.comment,
