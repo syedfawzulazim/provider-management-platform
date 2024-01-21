@@ -1,13 +1,18 @@
-import { INestApplication, Logger, ValidationPipe } from '@nestjs/common';
+import { INestApplication, Logger, ValidationPipe } from "@nestjs/common";
 import { AppModule } from './app.module';
 import { writeFileSync } from 'fs';
 import * as path from 'path';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import * as fs from 'fs'
 
 async function bootstrap(): Promise<INestApplication> {
   const logger = new Logger('boostrap');
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const httpsOptions = {
+    key: fs.readFileSync('./secrets/private.key'),
+    cert: fs.readFileSync('./secrets/certificate.crt'),
+  };
+  const app = await NestFactory.create(AppModule, {httpsOptions,  cors: true });
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -31,7 +36,7 @@ async function bootstrap(): Promise<INestApplication> {
   });
 
   if (process.env.DATABASE_MIGRATION !== 'true') {
-    await app.listen(process.env.PORT);
+    await app.listen(8443);
 
     logger.log(`Application listening ports: ${process.env.PORT}`);
   } else {
