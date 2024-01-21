@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.dev
     command: yarn run start:dev --debug 0.0.0.0:9229
     ports:
-      - ${PORT:-3000}:${PORT:-3000}
+      - ${PORT:-8443}:${PORT:-3000}
       - 9228:9229
     env_file:
       - ./.env

@@ -36,7 +36,7 @@ async function bootstrap(): Promise<INestApplication> {
   });
 
   if (process.env.DATABASE_MIGRATION !== 'true') {
-    await app.listen(8443);
+    await app.listen(process.env.PORT);
 
     logger.log(`Application listening ports: ${process.env.PORT}`);
   } else {
