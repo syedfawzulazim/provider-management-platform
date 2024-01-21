@@ -1,13 +1,13 @@
 {
     "openapi": "3.0.0",
     "paths": {
-        "/health-check": {
+        "/.well-known/pki-validation/3F00D98897171B414412A628E1E4A306.txt": {
             "get": {
-                "operationId": "HealthCheckController_checkAppHealth",
+                "operationId": "HealthCheckController_readFile",
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": "Provider Management API is healthy"
+                        "description": ""
                     }
                 },
                 "tags": [
