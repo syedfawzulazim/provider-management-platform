@@ -8,7 +8,11 @@ import * as fs from 'fs'
 
 async function bootstrap(): Promise<INestApplication> {
   const logger = new Logger('boostrap');
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const httpsOptions = {
+    key: fs.readFileSync('private.key'),
+    cert: fs.readFileSync('certificate.crt'),
+  };
+  const app = await NestFactory.create(AppModule, { httpsOptions, cors: true });
 
   app.useGlobalPipes(
     new ValidationPipe({
