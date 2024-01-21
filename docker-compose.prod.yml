@@ -3,7 +3,7 @@ services:
   api:
     image: sfazim/provider-management:latest
     ports:
-      - ${PORT:-3000}:${PORT:-3000}
+      - ${PORT:-8443}:${PORT:-3000}
     env_file:
       - ./.env
     depends_on:
