@@ -5,6 +5,10 @@ import * as path from 'path';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as fs from 'fs'
+import { ExpressAdapter } from "@nestjs/platform-express";
+import express from "express";
+import * as http from "http";
+import * as https from "https";
 
 async function bootstrap(): Promise<INestApplication> {
   const logger = new Logger('boostrap');
@@ -15,7 +19,8 @@ async function bootstrap(): Promise<INestApplication> {
     key: privateKey,
     cert: certificateKey,
   };
-  const app = await NestFactory.create(AppModule, {httpsOptions, cors: true });
+  const server = express();
+  const app = await NestFactory.create(AppModule,new ExpressAdapter(server), { cors: true });
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -39,7 +44,10 @@ async function bootstrap(): Promise<INestApplication> {
   });
 
   if (process.env.DATABASE_MIGRATION !== 'true') {
-    await app.listen(process.env.PORT);
+    await app.init();
+
+      http.createServer(server).listen(process.env.PORT);
+      https.createServer(httpsOptions, server).listen(443);
 
     logger.log(`Application listening ports: ${process.env.PORT}`);
   } else {
@@ -52,3 +60,4 @@ async function bootstrap(): Promise<INestApplication> {
 bootstrap().catch((error) => {
   console.log(error?.message, error?.stack);
 });
+
