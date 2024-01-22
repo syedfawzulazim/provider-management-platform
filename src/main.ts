@@ -47,7 +47,7 @@ async function bootstrap(): Promise<INestApplication> {
     await app.init();
 
       http.createServer(server).listen(process.env.PORT);
-      https.createServer(httpsOptions, server).listen(443);
+      https.createServer(httpsOptions, server).listen(8443);
 
     logger.log(`Application listening ports: ${process.env.PORT}`);
   } else {
