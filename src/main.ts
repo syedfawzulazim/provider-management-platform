@@ -8,11 +8,8 @@ import * as fs from 'fs'
 
 async function bootstrap(): Promise<INestApplication> {
   const logger = new Logger('boostrap');
-  const httpsOptions = {
-    key: fs.readFileSync('private.key'),
-    cert: fs.readFileSync('certificate.crt'),
-  };
-  const app = await NestFactory.create(AppModule, { httpsOptions, cors: true });
+
+  const app = await NestFactory.create(AppModule, { cors: true });
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -34,6 +31,9 @@ async function bootstrap(): Promise<INestApplication> {
   writeFileSync(outputPath, JSON.stringify(document, null, 4), {
     encoding: 'utf8',
   });
+  const privateKey = fs.readFileSync(__dirname + '/cert/private.pem', 'utf-8');
+  const certificateKey = fs.readFileSync(__dirname + '/cert/certificate.pem', 'utf-8');
+
 
   if (process.env.DATABASE_MIGRATION !== 'true') {
     await app.listen(process.env.PORT);
