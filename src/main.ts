@@ -9,8 +9,8 @@ import * as fs from 'fs'
 async function bootstrap(): Promise<INestApplication> {
   const logger = new Logger('boostrap');
 
-  const privateKey = fs.readFileSync(__dirname + '/cert/private.pem', 'utf-8');
-  const certificateKey = fs.readFileSync(__dirname + '/cert/certificate.pem', 'utf-8');
+  const privateKey = fs.readFileSync(__dirname + '/cert/private.key', 'utf-8');
+  const certificateKey = fs.readFileSync(__dirname + '/cert/certificate.crt', 'utf-8');
   const httpsOptions = {
     key: privateKey,
     cert: certificateKey,
