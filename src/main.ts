@@ -19,8 +19,9 @@ async function bootstrap(): Promise<INestApplication> {
     key: privateKey,
     cert: certificateKey,
   };
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   const server = express();
-  const app = await NestFactory.create(AppModule,new ExpressAdapter(server), { cors: true });
+  const app = await NestFactory.create(AppModule, new ExpressAdapter(server), { cors: true });
 
   app.useGlobalPipes(
     new ValidationPipe({
