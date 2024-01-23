@@ -4,18 +4,10 @@ import { writeFileSync } from 'fs';
 import * as path from 'path';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import * as fs from 'fs'
 
 async function bootstrap(): Promise<INestApplication> {
   const logger = new Logger('boostrap');
-
-  const privateKey = fs.readFileSync(__dirname + '/cert/private.key', 'utf-8');
-  const certificateKey = fs.readFileSync(__dirname + '/cert/certificate.crt', 'utf-8');
-  const httpsOptions = {
-    key: privateKey,
-    cert: certificateKey,
-  };
-  const app = await NestFactory.create(AppModule, {httpsOptions});
+  const app = await NestFactory.create(AppModule, { cors: true });
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -38,10 +30,9 @@ async function bootstrap(): Promise<INestApplication> {
     encoding: 'utf8',
   });
 
-  await app.init();
-
   if (process.env.DATABASE_MIGRATION !== 'true') {
     await app.listen(process.env.PORT);
+
     logger.log(`Application listening ports: ${process.env.PORT}`);
   } else {
     logger.log('Close application due to migrations');
@@ -53,4 +44,3 @@ async function bootstrap(): Promise<INestApplication> {
 bootstrap().catch((error) => {
   console.log(error?.message, error?.stack);
 });
-
