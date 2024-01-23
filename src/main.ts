@@ -5,10 +5,6 @@ import * as path from 'path';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as fs from 'fs'
-import { ExpressAdapter } from "@nestjs/platform-express";
-import express from "express";
-import * as http from "http";
-import * as https from "https";
 
 async function bootstrap(): Promise<INestApplication> {
   const logger = new Logger('boostrap');
@@ -19,9 +15,7 @@ async function bootstrap(): Promise<INestApplication> {
     key: privateKey,
     cert: certificateKey,
   };
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-  const server = express();
-  const app = await NestFactory.create(AppModule, new ExpressAdapter(server), { cors: true });
+  const app = await NestFactory.create(AppModule, {httpsOptions});
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -44,12 +38,10 @@ async function bootstrap(): Promise<INestApplication> {
     encoding: 'utf8',
   });
 
+  await app.init();
+
   if (process.env.DATABASE_MIGRATION !== 'true') {
-    await app.init();
-
-      http.createServer(server).listen(process.env.PORT);
-      https.createServer(httpsOptions, server).listen(8443);
-
+    await app.listen(process.env.PORT);
     logger.log(`Application listening ports: ${process.env.PORT}`);
   } else {
     logger.log('Close application due to migrations');

@@ -4,7 +4,6 @@ services:
     image: sfazim/provider-management:latest
     ports:
       - ${PORT:-3000}:${PORT:-3000}
-      - "443:8443"
     env_file:
       - ./.env
     depends_on:
