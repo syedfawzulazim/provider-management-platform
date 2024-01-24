@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: [aws-ec2, self-hosted]
+    runs-on: [self-hosted]
 
     steps:
     - name: Chown user
