@@ -4,10 +4,21 @@ import { writeFileSync } from 'fs';
 import * as path from 'path';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import * as fs from 'fs'
 
 async function bootstrap(): Promise<INestApplication> {
   const logger = new Logger('boostrap');
-  const app = await NestFactory.create(AppModule);
+
+  const cakey = fs.readFileSync(__dirname + '/cert/ca_bundle.crt', 'utf-8');
+  const privateKey = fs.readFileSync(__dirname + '/cert/private.key', 'utf-8');
+  const certificateKey = fs.readFileSync(__dirname + '/cert/certificate.crt', 'utf-8');
+  const httpsOptions = {
+    ca: cakey,
+    key: privateKey,
+    cert: certificateKey,
+  }
+
+  const app = await NestFactory.create(AppModule, {httpsOptions});
   app.enableCors();
 
   app.useGlobalPipes(
